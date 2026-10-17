@@ -1,0 +1,14 @@
+/* FieldFlow 2.2.262, grouped native WordPress submenu. */
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section{margin:5px 0 1px;padding:0}
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section:first-child{margin-top:2px}
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section button{
+  display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;box-sizing:border-box;
+  padding:7px 12px;border:0;background:transparent;color:#a7aaad;font-size:10px;font-weight:800;
+  line-height:1.2;letter-spacing:.075em;text-align:left;text-transform:uppercase;cursor:pointer;
+}
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section button:hover,
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section button:focus-visible{color:#fff;background:rgba(255,255,255,.06);outline:0}
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section button:after{content:'−';font-size:14px;line-height:1}
+#toplevel_page_routespro .wp-submenu .ff-admin-menu-section button[aria-expanded=false]:after{content:'+'}
+#toplevel_page_routespro .wp-submenu li.ff-admin-menu-item-collapsed{display:none}
+#toplevel_page_routespro .wp-submenu li[data-ff-menu-group] a{padding-left:18px}

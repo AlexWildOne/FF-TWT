@@ -1,0 +1,67 @@
+[
+  {
+    "name": "no rules keeps all questions visible",
+    "keys": ["q1", "q2"],
+    "rules": [],
+    "values": {"q1": "No"},
+    "expected": {"q1": true, "q2": true}
+  },
+  {
+    "name": "yes reveals order suggestion",
+    "keys": ["need_order", "order_suggestion"],
+    "rules": [{"source_key": "need_order", "target_key": "order_suggestion", "expected_value": "Sim"}],
+    "values": {"need_order": "sim"},
+    "expected": {"need_order": true, "order_suggestion": true}
+  },
+  {
+    "name": "no keeps order suggestion hidden",
+    "keys": ["need_order", "order_suggestion"],
+    "rules": [{"source_key": "need_order", "target_key": "order_suggestion", "expected_value": "Sim"}],
+    "values": {"need_order": "Não"},
+    "expected": {"need_order": true, "order_suggestion": false}
+  },
+  {
+    "name": "chained conditions only reveal reachable branch",
+    "keys": ["q1", "q2", "q3"],
+    "rules": [
+      {"source_key": "q1", "target_key": "q2", "expected_value": "yes"},
+      {"source_key": "q2", "target_key": "q3", "expected_value": "go"}
+    ],
+    "values": {"q1": "YES", "q2": "go"},
+    "expected": {"q1": true, "q2": true, "q3": true}
+  },
+  {
+    "name": "hidden source cannot reveal downstream target",
+    "keys": ["q1", "q2", "q3"],
+    "rules": [
+      {"source_key": "q1", "target_key": "q2", "expected_value": "yes"},
+      {"source_key": "q2", "target_key": "q3", "expected_value": "go"}
+    ],
+    "values": {"q1": "no", "q2": "go"},
+    "expected": {"q1": true, "q2": false, "q3": false}
+  },
+  {
+    "name": "multiple sources use OR visibility semantics",
+    "keys": ["q1", "q2", "target"],
+    "rules": [
+      {"source_key": "q1", "target_key": "target", "expected_value": "show"},
+      {"source_key": "q2", "target_key": "target", "expected_value": "show"}
+    ],
+    "values": {"q1": "hide", "q2": "show"},
+    "expected": {"q1": true, "q2": true, "target": true}
+  },
+  {
+    "name": "checkbox scalar tokens match booleans",
+    "keys": ["check", "target"],
+    "rules": [{"source_key": "check", "target_key": "target", "expected_value": "1"}],
+    "values": {"check": true},
+    "expected": {"check": true, "target": true}
+  },
+  {
+    "name": "multi choice arrays can reveal a target",
+    "keys": ["choice", "target"],
+    "rules": [{"source_key": "choice", "target_key": "target", "expected_value": "B"}],
+    "values": {"choice": ["A", "b"]},
+    "expected": {"choice": true, "target": true}
+  }
+]

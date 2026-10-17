@@ -1,0 +1,316 @@
+/*
+ * FieldFlow 2.2.242.1, Unified Layout System & Template Consistency
+ * Camada visual aditiva. Nao altera contratos, submissoes ou comportamento funcional.
+ */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard,.rp-front-routes,.rp-front-commercial,.rp-report-quick,.rp-report-focus,.rp-team-mail,.rp-team-inbox,.ff-expenses,.ff-briefings,.ff-client-briefings,.ff-implementations,.ff-stock-hub,.ffp-front,.ffp-academy,.rp-form-ui,.routespro-form){
+  --ff-layout-gap:calc(var(--ff-space,14px) * var(--ff-density,1));
+  --ff-layout-gap-sm:max(8px,calc(var(--ff-layout-gap) * .72));
+  --ff-layout-pad:clamp(12px,calc(var(--ff-layout-gap) * 1.05),18px);
+  --ff-layout-radius:var(--ff-radius,18px);
+  --ff-layout-radius-sm:max(9px,calc(var(--ff-radius,18px) * .68));
+  --ff-layout-danger:var(--ff-danger-text,#b91c1c);
+  --ff-layout-success:var(--ff-success-text,#047857);
+  --ff-layout-warning:var(--ff-warning-text,#b45309);
+  --ff-layout-soft:color-mix(in srgb,var(--ff-canvas,#f4f7fb) 66%,var(--ff-surface,#fff));
+  --ff-layout-primary-soft:color-mix(in srgb,var(--ff-primary,#2563eb) 9%,var(--ff-surface,#fff));
+  --ff-layout-danger-soft:color-mix(in srgb,var(--ff-layout-danger) 8%,var(--ff-surface,#fff));
+  --ff-layout-danger-border:color-mix(in srgb,var(--ff-layout-danger) 28%,var(--ff-border,#dbe4ef));
+}
+
+/* Ritmo vertical comum, compacto sem perder respiracao. */
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-shell,.rp-panels,.rp-panel.active){min-width:0}
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel.active,.rp-panel-card,.rp-premium-card,.routespro-card,.rp-card){margin-block:0 var(--ff-layout-gap)}
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-card,.rp-premium-card,.routespro-card,.rp-card){padding:var(--ff-layout-pad);border-radius:var(--ff-layout-radius);border-color:var(--ff-border,#dbe4ef);background:var(--ff-surface,#fff);box-shadow:var(--ff-shadow,0 8px 22px rgba(15,23,42,.06))}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-panel-head,.ffad-custom-head,.ffad-section-head){margin-bottom:var(--ff-layout-gap-sm)}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-panel-head p,.ffad-custom-head p,.ffad-section-head p){margin-top:4px;margin-bottom:0}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-kpi-grid,.rp-metrics,.rp-stats,.ffad-kpis,.ffad-summary-grid,.ffad-custom-grid){gap:var(--ff-layout-gap-sm)}
+
+/* KPIs mais densos e consistentes com o template ativo. */
+:where(.rp-premium-shell,.rp-client-premium) .rp-kpi,
+.routespro-dashboard :where(.ffad-kpi,.ffad-summary-grid>div){
+  min-height:88px!important;
+  padding:clamp(12px,var(--ff-layout-pad),16px)!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-layout-radius-sm)!important;
+  background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-layout-soft))!important;
+  box-shadow:0 7px 20px rgba(15,23,42,.045)!important;
+}
+:where(.rp-premium-shell,.rp-client-premium) .rp-kpi span,
+.routespro-dashboard :where(.ffad-kpi span,.ffad-summary-grid span){color:var(--ff-label,#475569)!important}
+:where(.rp-premium-shell,.rp-client-premium) .rp-kpi strong,
+.routespro-dashboard :where(.ffad-kpi strong,.ffad-summary-grid strong){color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+
+/* Formularios e evidencias, a foto fica livre e as acoes ficam em rodape. */
+:where(.rp-form-ui,.routespro-form) :where(.routespro-evidence-existing,.routespro-upload-preview){
+  display:grid!important;
+  grid-template-columns:repeat(auto-fill,minmax(118px,1fr))!important;
+  gap:10px!important;
+  align-items:stretch!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-item{
+  position:relative!important;
+  display:grid!important;
+  grid-template-rows:auto auto auto!important;
+  align-content:start!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-layout-radius-sm)!important;
+  background:var(--ff-surface,#fff)!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.055)!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item>.routespro-evidence-thumb,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-item>img{
+  grid-row:1!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:4/3!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item>.routespro-evidence-thumb img,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-item>img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-thumb span{
+  left:7px!important;right:7px!important;bottom:7px!important;
+  width:auto!important;min-height:30px!important;padding:6px 8px!important;
+  border-radius:9px!important;background:color-mix(in srgb,var(--ff-header-start,#0b1220) 88%,transparent)!important;
+  color:var(--ff-hero-text,#fff)!important;font-size:10px!important;line-height:1.15!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-item>span{
+  grid-row:2!important;display:block!important;min-height:30px!important;padding:7px 9px 4px!important;
+  color:var(--ff-muted,#64748b)!important;font-size:10px!important;font-weight:750!important;
+  white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-existing-media-remove,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-remove{
+  position:static!important;inset:auto!important;z-index:auto!important;
+  grid-row:3!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:calc(100% - 14px)!important;min-width:0!important;height:32px!important;min-height:32px!important;
+  margin:5px 7px 7px!important;padding:5px 9px!important;
+  border:1px solid var(--ff-layout-danger-border)!important;
+  border-radius:min(var(--ff-button-radius,10px),12px)!important;
+  background:var(--ff-layout-danger-soft)!important;color:var(--ff-layout-danger)!important;
+  box-shadow:none!important;font:inherit!important;font-size:10px!important;font-weight:850!important;line-height:1!important;
+  cursor:pointer!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-existing-media-remove:hover,
+:where(.rp-form-ui,.routespro-form) .routespro-existing-media-remove:focus-visible,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-remove:hover,
+:where(.rp-form-ui,.routespro-form) .routespro-upload-preview-remove:focus-visible{
+  background:color-mix(in srgb,var(--ff-layout-danger) 14%,var(--ff-surface,#fff))!important;
+  border-color:var(--ff-layout-danger)!important;outline:2px solid color-mix(in srgb,var(--ff-layout-danger) 24%,transparent)!important;outline-offset:1px!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item.is-pending-removal{
+  border-color:var(--ff-layout-danger-border)!important;background:var(--ff-layout-danger-soft)!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item.is-pending-removal>.routespro-evidence-thumb{opacity:.38!important;filter:grayscale(.8)!important}
+:where(.rp-form-ui,.routespro-form) .routespro-evidence-existing-item.is-pending-removal .routespro-existing-media-remove{
+  background:var(--ff-primary,#2563eb)!important;border-color:var(--ff-primary,#2563eb)!important;color:var(--ff-button-text,#fff)!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-existing-media-pending{
+  position:static!important;grid-row:2!important;display:block!important;margin:7px 7px 0!important;padding:6px 7px!important;
+  border-radius:8px!important;background:var(--ff-layout-danger)!important;color:#fff!important;font-size:9px!important;font-weight:850!important;text-align:center!important;
+}
+:where(.rp-form-ui,.routespro-form) .routespro-existing-media-pending[hidden]{display:none!important}
+:where(.rp-form-ui,.routespro-form) :where(.routespro-upload-source-btn,.routespro-upload-add){border-color:var(--ff-primary,#2563eb)!important;color:var(--ff-link,var(--ff-primary,#2563eb))!important;border-radius:var(--ff-button-radius,12px)!important}
+:where(.rp-form-ui,.routespro-form) .routespro-upload-source-btn.is-camera{background:var(--ff-layout-primary-soft)!important}
+:where(.rp-form-ui,.routespro-form) .routespro-upload-source-btn.is-gallery{background:var(--ff-layout-soft)!important}
+:where(.rp-form-ui,.routespro-form) :where(.routespro-form-section,.routespro-form-question){border-color:var(--ff-border,#dbe4ef)!important;background:var(--ff-surface,#fff)!important}
+
+/* Analytics, componentes criados no Centro de Atribuicoes e usados no front. */
+.routespro-dashboard .ffad-custom-dashboards{gap:var(--ff-layout-gap)!important}
+.routespro-dashboard .ffad-custom-dashboard{
+  padding:0!important;overflow:hidden!important;border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-layout-radius)!important;background:var(--ff-surface,#fff)!important;box-shadow:var(--ff-shadow,0 10px 28px rgba(15,23,42,.06))!important;
+}
+.routespro-dashboard .ffad-custom-head{padding:var(--ff-layout-pad)!important;background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-layout-soft))!important;border-bottom:1px solid var(--ff-border,#dbe4ef)!important}
+.routespro-dashboard .ffad-custom-grid{padding:var(--ff-layout-gap-sm)!important}
+.routespro-dashboard .ffad-metric{
+  padding:0!important;overflow:hidden!important;border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-layout-radius-sm)!important;background:var(--ff-surface,#fff)!important;box-shadow:0 7px 20px rgba(15,23,42,.04)!important;
+}
+.routespro-dashboard .ffad-metric:before{height:3px!important;background:linear-gradient(90deg,var(--ff-primary,#2563eb),var(--ff-accent,#06b6d4))!important}
+.routespro-dashboard .ffad-metric-label{padding:14px 14px 10px!important;border-bottom:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 70%,transparent)!important}
+.routespro-dashboard .ffad-metric-body{padding:11px 13px 13px!important}
+.routespro-dashboard :where(.ffad-question,.ffad-custom-head-copy>span){color:var(--ff-link,var(--ff-primary,#2563eb))!important}
+.routespro-dashboard :where(.ffad-metric-label>span,.ffad-ai-badge,.ffad-widget-detail>summary em){background:var(--ff-layout-primary-soft)!important;color:var(--ff-badge-text,var(--ff-primary,#2563eb))!important;border-color:color-mix(in srgb,var(--ff-primary,#2563eb) 18%,var(--ff-border,#dbe4ef))!important}
+.routespro-dashboard .ffad-series{border-color:var(--ff-border,#dbe4ef)!important;background:var(--ff-layout-soft)!important}
+.routespro-dashboard .ffad-series-row{min-width:0!important}
+.routespro-dashboard .ffad-series-row>span:first-of-type{min-width:0!important;white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important}
+.routespro-dashboard .ffad-series-row.is-text-value{
+  grid-template-columns:24px minmax(0,1fr)!important;align-items:start!important;
+}
+.routespro-dashboard .ffad-series-row.is-text-value .ffad-series-track{display:none!important}
+.routespro-dashboard .ffad-series-row.is-text-value>b{
+  grid-column:2!important;display:block!important;min-width:0!important;max-width:100%!important;
+  text-align:left!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;
+  color:var(--ff-text,#0f172a)!important;font-size:12px!important;font-weight:700!important;line-height:1.45!important;
+}
+.routespro-dashboard .ffad-widget-detail{border-color:var(--ff-border,#dbe4ef)!important;border-radius:var(--ff-layout-radius-sm)!important;background:var(--ff-surface,#fff)!important}
+.routespro-dashboard .ffad-widget-detail>summary{background:var(--ff-layout-soft)!important;color:var(--ff-text,#0f172a)!important}
+
+/* Tabelas, o modo mobile usa cartoes legiveis e nunca colunas de uma letra. */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) .ff-table-scroll{border-color:var(--ff-border,#dbe4ef);background:var(--ff-surface,#fff)}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) table.ff-table th{color:var(--ff-table-header-text,var(--ff-label,#475569))!important;background:var(--ff-layout-soft)!important}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) table.ff-table td{color:var(--ff-text,#0f172a)!important;word-break:normal!important;overflow-wrap:anywhere}
+
+/* Resumo do portal cliente, sem sobreposicoes nem cards demasiado altos. */
+.rp-client-premium .rp-summary-controls{display:grid!important;grid-template-columns:minmax(180px,1fr) auto!important;gap:10px!important;align-items:end!important}
+.rp-client-premium .rp-summary-controls>label{display:grid!important;gap:5px!important;min-width:0!important}
+.rp-client-premium .rp-summary-controls select{width:100%!important;min-width:0!important}
+.rp-client-premium .rp-route-summary-list{gap:8px!important;margin-top:10px!important}
+.rp-client-premium .rp-route-summary-item{
+  grid-template-columns:112px minmax(0,1fr) minmax(92px,auto)!important;gap:12px!important;min-height:0!important;padding:12px 14px!important;
+  border-color:var(--ff-border,#dbe4ef)!important;border-radius:var(--ff-layout-radius-sm)!important;background:var(--ff-surface,#fff)!important;
+}
+.rp-client-premium .rp-route-summary-item>span{min-width:0!important}
+.rp-client-premium .rp-route-summary-item>span:nth-of-type(1) small{display:block!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.35!important}
+.rp-client-premium .rp-route-summary-item>span:nth-of-type(2){text-align:right!important;white-space:nowrap!important}
+.rp-client-premium .rp-route-summary-item.active{background:var(--ff-layout-primary-soft)!important;border-color:var(--ff-primary,#2563eb)!important}
+
+/* Navegacao inferior mais compacta, com conteudo sempre acima da barra. */
+@media (max-width:1180px){
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-shell{padding-bottom:calc(82px + env(safe-area-inset-bottom,0px))!important}
+  :where(.rp-premium-shell.rp-app,.rp-client-premium) .rp-tabbar{
+    min-height:68px!important;padding:7px!important;gap:4px!important;overflow-x:auto!important;overscroll-behavior-inline:contain!important;scrollbar-width:none!important;
+    border-radius:20px!important;background:var(--ff-header-start,#0b1220)!important;
+  }
+  :where(.rp-premium-shell.rp-app,.rp-client-premium) .rp-tabbar::-webkit-scrollbar{display:none!important}
+  :where(.rp-premium-shell.rp-app,.rp-client-premium) .rp-tab{
+    flex:0 0 auto!important;min-width:92px!important;min-height:52px!important;padding:8px 12px!important;
+    border-radius:15px!important;white-space:nowrap!important;font-size:12px!important;
+  }
+  :where(.rp-premium-shell.rp-app,.rp-client-premium) .rp-tab.active{
+    background:var(--ff-surface,#fff)!important;color:var(--ff-nav-active-text,var(--ff-text,#0f172a))!important;
+  }
+}
+
+@media (max-width:760px){
+  :where(.rp-premium-shell,.rp-client-premium) .rp-shell{padding-inline:10px!important}
+  :where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-card,.rp-premium-card,.routespro-card,.rp-card){padding:12px!important;border-radius:16px!important}
+  :where(.rp-premium-shell,.rp-client-premium) .rp-kpi,
+  .routespro-dashboard :where(.ffad-kpi,.ffad-summary-grid>div){min-height:78px!important;padding:11px!important}
+  :where(.rp-form-ui,.routespro-form) :where(.routespro-evidence-existing,.routespro-upload-preview){grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+  :where(.rp-form-ui,.routespro-form) .routespro-existing-media-remove,
+  :where(.rp-form-ui,.routespro-form) .routespro-upload-preview-remove{height:30px!important;min-height:30px!important;margin:4px 5px 5px!important;width:calc(100% - 10px)!important;padding:4px 5px!important;font-size:9px!important}
+  :where(.rp-form-ui,.routespro-form) .routespro-upload-preview-item>span{padding-inline:6px!important}
+  .routespro-dashboard .ffad-custom-head{padding:13px!important}
+  .routespro-dashboard .ffad-custom-grid{padding:7px!important;gap:9px!important}
+  .routespro-dashboard .ffad-metric-label{padding:12px!important}
+  .routespro-dashboard .ffad-metric-body{padding:10px!important}
+  .rp-client-premium .rp-summary-controls{grid-template-columns:1fr!important}
+  .rp-client-premium .rp-summary-controls .rp-small{width:100%!important}
+  .rp-client-premium .rp-route-summary-item{
+    grid-template-columns:minmax(0,1fr) auto!important;gap:6px 10px!important;padding:11px!important;
+  }
+  .rp-client-premium .rp-route-summary-item>strong{grid-column:1!important;grid-row:1!important;font-size:13px!important}
+  .rp-client-premium .rp-route-summary-item>span:nth-of-type(2){grid-column:2!important;grid-row:1!important;font-size:13px!important}
+  .rp-client-premium .rp-route-summary-item>span:nth-of-type(1){grid-column:1/-1!important;grid-row:2!important;padding-top:7px!important;border-top:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 65%,transparent)!important}
+
+  .ff-table.ff-table-cards td,.rp-responsive-table.ff-table-cards td{
+    grid-template-columns:minmax(92px,34%) minmax(0,1fr)!important;gap:8px!important;text-align:left!important;
+  }
+  .ff-table.ff-table-cards td:before,.rp-responsive-table.ff-table-cards td:before{overflow-wrap:normal!important;word-break:normal!important}
+}
+
+@media (max-width:430px){
+  :where(.rp-form-ui,.routespro-form) :where(.routespro-evidence-existing,.routespro-upload-preview){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .ff-table.ff-table-cards td,.rp-responsive-table.ff-table-cards td{grid-template-columns:1fr!important;gap:3px!important}
+  .ff-table.ff-table-cards td:before,.rp-responsive-table.ff-table-cards td:before{margin-bottom:1px!important}
+  :where(.rp-premium-shell.rp-app,.rp-client-premium) .rp-tab{min-width:88px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  :where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard,.routespro-form) *{scroll-behavior:auto!important}
+}
+
+/* 2.2.242.1, cards de rotas compactos e badges estaveis em Analytics mobile. */
+.routespro-dashboard .ffad-status{
+  max-width:100%!important;
+  white-space:nowrap!important;
+  word-break:keep-all!important;
+  overflow-wrap:normal!important;
+  line-height:1!important;
+  text-align:center!important;
+}
+@media (max-width:760px){
+  .routespro-dashboard .ffad-mobile-list{gap:8px!important}
+  .routespro-dashboard .ffad-route-card{
+    padding:11px!important;
+    border-radius:14px!important;
+    box-shadow:0 6px 18px rgba(15,23,42,.045)!important;
+  }
+  .routespro-dashboard .ffad-route-card-head{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px!important;
+    align-items:start!important;
+  }
+  .routespro-dashboard .ffad-route-card-head>div{min-width:0!important}
+  .routespro-dashboard .ffad-route-card h5{
+    margin:0!important;
+    font-size:14px!important;
+    line-height:1.28!important;
+    letter-spacing:-.01em!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+  }
+  .routespro-dashboard .ffad-route-card p{
+    margin:4px 0 0!important;
+    color:var(--ff-muted,#64748b)!important;
+    font-size:11px!important;
+    line-height:1.35!important;
+    overflow-wrap:anywhere!important;
+  }
+  .routespro-dashboard .ffad-route-card-head .ffad-status{
+    align-self:start!important;
+    justify-self:end!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:6px 9px!important;
+    border-radius:999px!important;
+    font-size:10px!important;
+    font-weight:850!important;
+  }
+  .routespro-dashboard .ffad-route-meta{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+    margin-top:8px!important;
+  }
+  .routespro-dashboard .ffad-route-meta>div{
+    display:flex!important;
+    min-width:0!important;
+    min-height:58px!important;
+    padding:7px 4px!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 62%,transparent)!important;
+    border-radius:10px!important;
+    background:var(--ff-layout-soft)!important;
+  }
+  .routespro-dashboard .ffad-route-meta strong{
+    display:block!important;
+    margin:0!important;
+    color:var(--ff-heading,var(--ff-text,#0f172a))!important;
+    font-size:18px!important;
+    line-height:1.05!important;
+  }
+  .routespro-dashboard .ffad-route-meta small{
+    display:block!important;
+    margin-top:5px!important;
+    color:var(--ff-muted,#64748b)!important;
+    font-size:9px!important;
+    line-height:1.15!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+}
+@media (max-width:480px){
+  .routespro-dashboard .ffad-route-meta{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+}

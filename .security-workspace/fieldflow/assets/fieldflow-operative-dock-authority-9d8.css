@@ -1,0 +1,37 @@
+/* FieldFlow 2.2.633 | fieldflow-operative-inline-dock-authority-9d8-v1
+ * Emitted by the operative shortcode itself. Does not depend on asset enqueue.
+ * Client portal / campaign branding untouched.
+ */
+@media (max-width:760px){
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8{
+    --ffv-dock-reserve:calc(var(--ffv-dock-height,66px) + 42px + env(safe-area-inset-bottom,0px));
+  }
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8 .rp-tabs{
+    position:fixed!important;
+    left:max(8px,env(safe-area-inset-left,0px))!important;
+    right:max(8px,env(safe-area-inset-right,0px))!important;
+    bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;
+    margin:0!important;padding:0!important;width:auto!important;max-width:none!important;
+    z-index:2147483001!important;
+    transform:translate3d(0,0,0)!important;
+    opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+    transition:transform .20s ease,opacity .20s ease,visibility .20s ease!important;
+  }
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8.ffv-dock-collapsed-9d8 .rp-tabs{
+    transform:translate3d(0,calc(100% + 55px + env(safe-area-inset-bottom,0px)),0)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8 .rp-shell{
+    padding-bottom:var(--ffv-dock-reserve)!important;
+  }
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8 .rp-panels{
+    padding-bottom:var(--ffv-dock-reserve)!important;
+    scroll-padding-bottom:var(--ffv-dock-reserve)!important;
+  }
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8 .rp-panel.active :is(input,select,textarea,button,[role="combobox"],.routespro-product-row,.rp-report-quick){
+    scroll-margin-bottom:var(--ffv-dock-reserve)!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  #routespro-app.ffv-dock-authority-9d8.ffv-dock-owner-9d8.ffv-dock-ready-9d8 .rp-tabs{transition:none!important;}
+}

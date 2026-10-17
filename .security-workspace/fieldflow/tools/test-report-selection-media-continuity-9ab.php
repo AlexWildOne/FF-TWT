@@ -1,0 +1,24 @@
+<?php
+$root=dirname(__DIR__);
+$read=static function(string $p)use($root):string{return is_readable($root.'/'.$p)?(string)file_get_contents($root.'/'.$p):'';};
+$fail=[];
+$assert=static function(bool $ok,string $name)use(&$fail):void{if(!$ok)$fail[]=$name;};
+$app=$read('src/Front/AppShortcodeRenderer.php');
+$shortcodes=$read('src/Shortcodes.php');
+$form=$read('src/Forms/FormRenderer.php');
+$bridge=$read('src/Mobile/WebViewBridge.php');
+$assert(strpos($shortcodes,"els.store.addEventListener('pointerdown'")!==false,'selection_intent_before_native_select');
+$assert(strpos($shortcodes,"els.store.addEventListener('change'")!==false&&strpos($shortcodes,'reportSelectionDetail(visit)')!==false,'selection_change_persisted');
+$assert(strpos($app,'window.clearTimeout(reportVisitRetryTimer)')!==false&&strpos($app,'pendingReportVisit=null')!==false,'stale_retry_cancelled');
+$assert(strpos($app,'liveReportVisit()||pendingReportVisit')!==false,'snapshot_prefers_live_visit');
+$assert(strpos($app,"if(liveVisit){")!==false&&strpos($app,"reason:String(reason||'live-report-authority')")!==false,'resume_prefers_mounted_form');
+$assert(strpos($bridge,"if(document.visibilityState==='hidden'){armNativeResume();")!==false,'hidden_arms_resume');
+$assert(strpos($bridge,"if(consumeNativeResumeArm())queueNativeResume('visibility-visible')")!==false,'visible_consumes_arm');
+$assert(strpos($bridge,"window.addEventListener('focus',function(){if(document.visibilityState!=='hidden'&&consumeNativeResumeArm())queueNativeResume('focus-after-hidden');})")!==false,'focus_requires_real_background');
+$assert(strpos($form,'A proteger fotografia no dispositivo')!==false,'media_commit_status');
+$assert(strpos($form,'IndexedDB. This is the commit point for camera/gallery return.')!==false,'media_commit_point');
+$assert(strpos($form,'Persist the optimised transport copy exactly once.')!==false,'post_optimise_checkpoint');
+$assert(strpos($form,"fieldflow:form-media-checkpointed")!==false,'shell_media_event');
+$assert(strpos($form,"if(rpConsumeResumeDraftArm())rpQueueResumeDraftForms('visibility-visible')")!==false,'form_visible_requires_real_background');
+$assert(strpos($form,"rpQueueResumeDraftForms('focus-after-hidden')")!==false&&strpos($form,"rpQueueResumeDraftForms('focus')")===false,'form_focus_requires_real_background');
+if($fail){fwrite(STDERR,'FAIL: '.implode(',',$fail)."\n");exit(1);}echo "REPORT SELECTION MEDIA CONTINUITY 9AB RUNTIME OK\n";

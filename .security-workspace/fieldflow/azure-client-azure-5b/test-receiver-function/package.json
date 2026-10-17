@@ -1,0 +1,13 @@
+{
+  "name": "fieldflow-client-azure-test-receiver",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.3.2",
+    "@azure/functions": "^4.7.2"
+  }
+}

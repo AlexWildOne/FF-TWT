@@ -1,0 +1,547 @@
+/*
+ * FieldFlow 2.2.245, Premium Analytics & Widget Experience
+ * Camada visual aditiva para Analytics, widgets e evidencias.
+ */
+:where(.routespro-dashboard,.rp-client-premium){
+  --ff-analytics-gap:clamp(10px,1.45vw,16px);
+  --ff-analytics-gap-sm:clamp(7px,1vw,11px);
+  --ff-analytics-pad:clamp(13px,1.6vw,18px);
+  --ff-analytics-radius:var(--ff-radius,18px);
+  --ff-analytics-radius-sm:max(10px,calc(var(--ff-radius,18px) * .72));
+  --ff-analytics-soft:color-mix(in srgb,var(--ff-canvas,#f4f7fb) 68%,var(--ff-surface,#fff));
+  --ff-analytics-primary-soft:color-mix(in srgb,var(--ff-primary,#2563eb) 9%,var(--ff-surface,#fff));
+  --ff-analytics-accent-soft:color-mix(in srgb,var(--ff-accent,#06b6d4) 10%,var(--ff-surface,#fff));
+  --ff-analytics-success-soft:color-mix(in srgb,var(--ff-success-text,#047857) 9%,var(--ff-surface,#fff));
+  --ff-analytics-warning-soft:color-mix(in srgb,var(--ff-warning-text,#b45309) 9%,var(--ff-surface,#fff));
+  --ff-analytics-danger-soft:color-mix(in srgb,var(--ff-danger-text,#b91c1c) 8%,var(--ff-surface,#fff));
+}
+
+/* Estrutura geral, maior densidade e hierarquia consistente. */
+.routespro-dashboard .ffad-shell,
+.rp-client-premium .rp-analytics-workspace{gap:var(--ff-analytics-gap)!important}
+.routespro-dashboard .ffad-head,
+.rp-client-premium .rp-analytics-overview{
+  border-radius:var(--ff-analytics-radius)!important;
+  box-shadow:var(--ff-shadow,0 12px 32px rgba(15,23,42,.08))!important;
+}
+.routespro-dashboard .ffad-head{padding:clamp(15px,2vw,20px)!important}
+.routespro-dashboard .ffad-head h4{font-size:clamp(20px,3vw,26px)!important;line-height:1.1!important}
+.routespro-dashboard .ffad-head p{max-width:760px!important;font-size:clamp(12px,1.5vw,14px)!important}
+.routespro-dashboard .ffad-scope{padding:6px 10px!important;font-size:10px!important}
+
+/* Filtros e barra de relatorio. */
+.routespro-dashboard .ffad-filters,
+.rp-client-premium .rp-analytics-filters{
+  gap:var(--ff-analytics-gap-sm)!important;
+  padding:var(--ff-analytics-pad)!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-analytics-radius)!important;
+  background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-analytics-soft))!important;
+  box-shadow:0 7px 22px rgba(15,23,42,.035)!important;
+}
+.routespro-dashboard .ffad-filter span,
+.rp-client-premium .rp-analytics-filters label>span{
+  color:var(--ff-label,#475569)!important;
+  font-size:10px!important;
+  letter-spacing:.065em!important;
+}
+.routespro-dashboard .ffad-reportbar,
+.rp-client-premium .rp-analytics-reportbar{
+  padding:12px 14px!important;
+  border-color:color-mix(in srgb,var(--ff-primary,#2563eb) 19%,var(--ff-border,#dbe4ef))!important;
+  border-radius:var(--ff-analytics-radius-sm)!important;
+  background:linear-gradient(135deg,var(--ff-analytics-primary-soft),var(--ff-surface,#fff) 58%,var(--ff-analytics-accent-soft))!important;
+}
+.routespro-dashboard .ffad-btn,
+.routespro-dashboard .ffad-preset,
+.rp-client-premium .rp-analytics-preset{
+  min-height:36px!important;
+  padding:7px 11px!important;
+  border-radius:var(--ff-button-radius,11px)!important;
+  font-size:11px!important;
+}
+
+/* KPIs, compactos e comparaveis. */
+.routespro-dashboard .ffad-kpis{grid-template-columns:repeat(auto-fit,minmax(138px,1fr))!important;gap:var(--ff-analytics-gap-sm)!important}
+.routespro-dashboard .ffad-kpi{
+  min-height:96px!important;
+  padding:13px 14px!important;
+  border-color:var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-analytics-radius-sm)!important;
+  background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-analytics-soft))!important;
+  box-shadow:0 6px 19px rgba(15,23,42,.04)!important;
+}
+.routespro-dashboard .ffad-kpi:before{width:3px!important;background:linear-gradient(180deg,var(--ff-primary,#2563eb),var(--ff-accent,#06b6d4))!important}
+.routespro-dashboard .ffad-kpi span{font-size:9px!important;color:var(--ff-label,#475569)!important}
+.routespro-dashboard .ffad-kpi strong{margin:7px 0 4px!important;font-size:clamp(22px,3vw,29px)!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+.routespro-dashboard .ffad-kpi small{font-size:10px!important;color:var(--ff-muted,#64748b)!important}
+.routespro-dashboard .ffad-progress{height:4px!important;margin-top:9px!important;background:color-mix(in srgb,var(--ff-border,#dbe4ef) 72%,transparent)!important}
+
+/* Painel principal. */
+.routespro-dashboard .ffad-main{grid-template-columns:minmax(0,1.55fr) minmax(240px,.45fr)!important;gap:var(--ff-analytics-gap)!important}
+.routespro-dashboard .ffad-card{
+  padding:var(--ff-analytics-pad)!important;
+  border-color:var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-analytics-radius)!important;
+  background:var(--ff-surface,#fff)!important;
+  box-shadow:0 8px 24px rgba(15,23,42,.045)!important;
+}
+.routespro-dashboard .ffad-chart{min-height:220px!important;padding:6px!important;background:var(--ff-analytics-soft)!important}
+.routespro-dashboard .ffad-chart svg{height:220px!important}
+.routespro-dashboard .ffad-insights{gap:8px!important}
+.routespro-dashboard .ffad-insight{padding:10px 11px!important;border-color:var(--ff-border,#dbe4ef)!important;border-radius:12px!important;background:var(--ff-analytics-soft)!important}
+.routespro-dashboard .ffad-insight strong{font-size:15px!important;line-height:1.25!important}
+.routespro-dashboard .ffad-insight small{font-size:10px!important}
+
+/* Dashboard criado no Centro de Atribuicoes. */
+.routespro-dashboard .ffad-custom-dashboards,
+.rp-client-premium .rp-analytics-visuals{gap:var(--ff-analytics-gap)!important}
+.routespro-dashboard .ffad-custom-dashboard,
+.rp-client-premium .rp-analytics-dashboard{
+  overflow:hidden!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-analytics-radius)!important;
+  background:var(--ff-surface,#fff)!important;
+  box-shadow:0 9px 26px rgba(15,23,42,.05)!important;
+}
+.routespro-dashboard .ffad-custom-head,
+.rp-client-premium .rp-analytics-dashboard-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;
+  gap:12px!important;
+  padding:14px var(--ff-analytics-pad)!important;
+  margin:0!important;
+  border-bottom:1px solid var(--ff-border,#dbe4ef)!important;
+  background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-analytics-soft))!important;
+}
+.routespro-dashboard .ffad-custom-head h5,
+.rp-client-premium .rp-analytics-dashboard-head h4{margin:2px 0 0!important;font-size:clamp(16px,2vw,19px)!important;line-height:1.2!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+.routespro-dashboard .ffad-custom-head p,
+.rp-client-premium .rp-analytics-dashboard-head p{margin:4px 0 0!important;max-width:760px!important;font-size:11px!important;line-height:1.4!important;color:var(--ff-muted,#64748b)!important}
+.routespro-dashboard .ffad-custom-head>em,
+.rp-client-premium .rp-analytics-dashboard-head>em{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:28px!important;padding:5px 9px!important;border:1px solid color-mix(in srgb,var(--ff-primary,#2563eb) 18%,var(--ff-border,#dbe4ef))!important;
+  border-radius:999px!important;background:var(--ff-analytics-primary-soft)!important;color:var(--ff-badge-text,var(--ff-primary,#2563eb))!important;
+  font-size:10px!important;font-weight:850!important;font-style:normal!important;white-space:nowrap!important;
+}
+.routespro-dashboard .ffad-custom-grid,
+.rp-client-premium .rp-analytics-visual-grid{
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:var(--ff-analytics-gap-sm)!important;
+  padding:var(--ff-analytics-gap-sm)!important;
+}
+
+/* Widgets por tipo. */
+.routespro-dashboard .ffad-metric,
+.rp-client-premium .rp-analytics-visual-card,
+.rp-client-premium .rp-analytics-table-card{
+  position:relative!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;
+  border-radius:var(--ff-analytics-radius-sm)!important;
+  background:var(--ff-surface,#fff)!important;
+  box-shadow:0 5px 17px rgba(15,23,42,.038)!important;
+}
+.routespro-dashboard .ffad-metric{grid-column:span 12!important;padding:0!important}
+.routespro-dashboard .ffad-metric.is-compact-widget{grid-column:span 4!important}
+.routespro-dashboard .ffad-metric.kpi{grid-column:span 3!important}
+.routespro-dashboard .ffad-metric.bar,
+.routespro-dashboard .ffad-metric.line,
+.routespro-dashboard .ffad-metric.pie{grid-column:span 6!important}
+.rp-client-premium .rp-analytics-visual-card{grid-column:span 6!important}
+.rp-client-premium .rp-analytics-visual-card.is-kpi{grid-column:span 3!important}
+.rp-client-premium .rp-analytics-visual-card.is-table,
+.rp-client-premium .rp-analytics-visual-card.is-evidence,
+.rp-client-premium .rp-analytics-visual-card.is-share-space,
+.rp-client-premium .rp-analytics-visual-card.is-fronts,
+.rp-client-premium .rp-analytics-visual-card.is-order{grid-column:span 12!important}
+
+.routespro-dashboard .ffad-metric:before,
+.rp-client-premium .rp-analytics-visual-card:before,
+.rp-client-premium .rp-analytics-table-card:before{
+  content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--ff-primary,#2563eb),var(--ff-accent,#06b6d4));
+}
+.routespro-dashboard .ffad-metric[data-ff-widget-kind="evidence"]:before,
+.rp-client-premium .rp-analytics-visual-card.is-evidence:before{background:linear-gradient(90deg,var(--ff-accent,#06b6d4),var(--ff-primary,#2563eb))}
+.routespro-dashboard .ffad-metric[data-ff-widget-kind="table"]:before,
+.rp-client-premium .rp-analytics-table-card:before{background:var(--ff-label,#475569)}
+.routespro-dashboard .ffad-metric[data-ff-widget-kind="text"]:before{background:linear-gradient(90deg,var(--ff-primary,#2563eb),color-mix(in srgb,var(--ff-primary,#2563eb) 35%,var(--ff-accent,#06b6d4)))}
+
+.routespro-dashboard .ffad-metric-label,
+.rp-client-premium .rp-analytics-card-head,
+.rp-client-premium .rp-analytics-table-card>.rp-panel-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;
+  gap:10px!important;
+  padding:13px 14px 10px!important;
+  margin:0!important;
+  border-bottom:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 72%,transparent)!important;
+  background:linear-gradient(180deg,var(--ff-surface,#fff),color-mix(in srgb,var(--ff-analytics-soft) 66%,var(--ff-surface,#fff)))!important;
+}
+.routespro-dashboard .ffad-metric-copy,
+.rp-client-premium .rp-analytics-card-copy{min-width:0!important}
+.routespro-dashboard .ffad-metric-eyebrow,
+.rp-client-premium .rp-analytics-eyebrow{
+  display:block!important;margin:0 0 3px!important;color:var(--ff-label,#475569)!important;
+  font-size:8px!important;font-weight:900!important;letter-spacing:.08em!important;text-transform:uppercase!important;
+}
+.routespro-dashboard .ffad-metric-label strong,
+.rp-client-premium .rp-analytics-card-copy h4,
+.rp-client-premium .rp-analytics-table-card>.rp-panel-head h4{
+  display:block!important;margin:0!important;min-width:0!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important;
+  font-size:14px!important;line-height:1.28!important;overflow-wrap:anywhere!important;word-break:normal!important;
+}
+.routespro-dashboard .ffad-question,
+.rp-client-premium .rp-analytics-card-copy p,
+.rp-client-premium .rp-analytics-question{
+  margin:4px 0 0!important;color:var(--ff-muted,#64748b)!important;font-size:10px!important;line-height:1.4!important;overflow-wrap:anywhere!important;
+}
+.routespro-dashboard .ffad-metric-label>span,
+.rp-client-premium .rp-analytics-card-meta .rp-pill,
+.rp-client-premium .rp-analytics-table-card>.rp-panel-head>.rp-pill{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:25px!important;padding:4px 8px!important;border:1px solid color-mix(in srgb,var(--ff-primary,#2563eb) 17%,var(--ff-border,#dbe4ef))!important;
+  border-radius:999px!important;background:var(--ff-analytics-primary-soft)!important;color:var(--ff-badge-text,var(--ff-primary,#2563eb))!important;
+  font-size:8px!important;font-weight:900!important;letter-spacing:.04em!important;text-transform:uppercase!important;white-space:nowrap!important;
+}
+.routespro-dashboard .ffad-metric-body{padding:11px 13px 13px!important}
+.routespro-dashboard .ffad-metric-note,
+.rp-client-premium .rp-analytics-ai-note{
+  margin:0 0 9px!important;padding:8px 10px!important;border-left:3px solid var(--ff-primary,#2563eb)!important;
+  border-radius:8px!important;background:var(--ff-analytics-primary-soft)!important;color:var(--ff-text,#0f172a)!important;font-size:10px!important;line-height:1.45!important;
+}
+.routespro-dashboard .ffad-metric-value{
+  display:flex!important;min-height:70px!important;align-items:center!important;justify-content:flex-start!important;
+  color:var(--ff-heading,var(--ff-text,#0f172a))!important;font-size:clamp(26px,4vw,38px)!important;font-weight:900!important;line-height:1!important;
+}
+
+/* Series numericas e respostas textuais. */
+.routespro-dashboard .ffad-series{display:grid!important;gap:6px!important;padding:7px!important;border-radius:12px!important;background:var(--ff-analytics-soft)!important}
+.routespro-dashboard .ffad-series-row{
+  min-height:34px!important;padding:6px 7px!important;border:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 70%,transparent)!important;
+  border-radius:9px!important;background:var(--ff-surface,#fff)!important;
+}
+.routespro-dashboard .ffad-series-row.is-text-value{
+  grid-template-columns:24px minmax(0,1fr)!important;gap:8px!important;padding:8px!important;
+}
+.routespro-dashboard .ffad-series-row.is-text-value>em{
+  grid-column:1!important;grid-row:1/3!important;display:flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;
+  margin:0!important;border-radius:8px!important;background:var(--ff-analytics-primary-soft)!important;color:var(--ff-primary,#2563eb)!important;font-size:10px!important;font-weight:900!important;font-style:normal!important;
+}
+.routespro-dashboard .ffad-series-row.is-text-value>span:first-of-type{
+  grid-column:2!important;display:block!important;min-width:0!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important;font-size:10px!important;font-weight:800!important;line-height:1.3!important;
+}
+.routespro-dashboard .ffad-series-row.is-text-value>b{grid-column:2!important;font-size:11px!important;line-height:1.45!important;font-weight:650!important}
+.routespro-dashboard .ffad-series-row[hidden]{display:none!important}
+.ff-analytics-more{
+  display:inline-flex;align-items:center;justify-content:center;min-height:34px;margin:8px auto 0;padding:6px 11px;
+  border:1px solid color-mix(in srgb,var(--ff-primary,#2563eb) 22%,var(--ff-border,#dbe4ef));border-radius:999px;
+  background:var(--ff-analytics-primary-soft);color:var(--ff-link,var(--ff-primary,#2563eb));font:inherit;font-size:10px;font-weight:850;cursor:pointer;
+}
+.ff-analytics-more:hover,.ff-analytics-more:focus-visible{border-color:var(--ff-primary,#2563eb);outline:2px solid color-mix(in srgb,var(--ff-primary,#2563eb) 18%,transparent);outline-offset:2px}
+
+/* Comparacoes e share space. */
+.routespro-dashboard .ffad-fronts,
+.routespro-dashboard .ffad-share-summary,
+.rp-client-premium .rp-analytics-fronts-summary{
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(105px,1fr))!important;gap:7px!important;margin:9px 0!important;
+}
+.routespro-dashboard .ffad-fronts>div,
+.routespro-dashboard .ffad-share-summary>div,
+.rp-client-premium .rp-analytics-fronts-summary>div{
+  min-height:64px!important;padding:9px!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:10px!important;background:var(--ff-analytics-soft)!important;
+}
+.routespro-dashboard :is(.ffad-fronts,.ffad-share-summary) span{font-size:8px!important;letter-spacing:.05em!important;text-transform:uppercase!important;color:var(--ff-label,#475569)!important}
+.routespro-dashboard :is(.ffad-fronts,.ffad-share-summary) strong{display:block!important;margin-top:5px!important;font-size:18px!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+.routespro-dashboard .ffad-share-bars{display:grid!important;gap:7px!important;margin-top:10px!important}
+.routespro-dashboard .ffad-share-row{display:grid!important;grid-template-columns:minmax(110px,.7fr) minmax(140px,1.5fr) auto!important;gap:9px!important;align-items:center!important;padding:8px!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:10px!important;background:var(--ff-surface,#fff)!important}
+.routespro-dashboard .ffad-share-row>strong{font-size:10px!important;line-height:1.3!important}
+.routespro-dashboard .ffad-share-row>em{font-size:9px!important;white-space:nowrap!important}
+
+/* Tabelas e detalhes. */
+.routespro-dashboard .ffad-widget-detail,
+.rp-client-premium .rp-widget-detail{
+  margin-top:9px!important;overflow:hidden!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:11px!important;background:var(--ff-surface,#fff)!important;
+}
+.routespro-dashboard .ffad-widget-detail>summary,
+.rp-client-premium .rp-widget-detail>summary{
+  min-height:42px!important;padding:9px 11px!important;background:var(--ff-analytics-soft)!important;color:var(--ff-text,#0f172a)!important;cursor:pointer!important;
+}
+.routespro-dashboard .ffad-widget-detail-body,
+.rp-client-premium .rp-widget-detail-body{padding:9px!important}
+.routespro-dashboard .ffad-table-controls,
+.rp-client-premium .rp-table-tools{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;flex-wrap:wrap!important;
+  margin:0 0 8px!important;padding:7px 8px!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:10px!important;background:var(--ff-analytics-soft)!important;
+}
+.routespro-dashboard .ffad-table-controls select,
+.rp-client-premium .rp-table-tools select,
+.rp-client-premium .rp-table-tools input{min-height:34px!important;padding:6px 9px!important;font-size:10px!important}
+.routespro-dashboard .ffad-table-wrap,
+.rp-client-premium .rp-responsive-analytics-table{
+  overflow:auto!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:10px!important;background:var(--ff-surface,#fff)!important;
+  scrollbar-width:thin!important;scrollbar-color:color-mix(in srgb,var(--ff-primary,#2563eb) 35%,transparent) transparent!important;
+}
+.routespro-dashboard .ffad-analytics-table,
+.rp-client-premium .rp-responsive-analytics-table table{width:100%!important;border-collapse:separate!important;border-spacing:0!important}
+.routespro-dashboard .ffad-analytics-table th,
+.rp-client-premium .rp-responsive-analytics-table th{
+  position:sticky!important;top:0!important;z-index:1!important;padding:9px 10px!important;background:var(--ff-analytics-soft)!important;color:var(--ff-table-header-text,var(--ff-label,#475569))!important;
+  font-size:8px!important;letter-spacing:.055em!important;text-transform:uppercase!important;white-space:nowrap!important;
+}
+.routespro-dashboard .ffad-analytics-table td,
+.rp-client-premium .rp-responsive-analytics-table td{padding:9px 10px!important;color:var(--ff-text,#0f172a)!important;font-size:10px!important;line-height:1.4!important;vertical-align:top!important}
+.routespro-dashboard .ffad-analytics-table tbody tr:nth-child(even),
+.rp-client-premium .rp-responsive-analytics-table tbody tr:nth-child(even){background:color-mix(in srgb,var(--ff-analytics-soft) 56%,transparent)!important}
+.routespro-dashboard .ffad-pagination,
+.rp-client-premium .rp-pagination{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:5px!important;flex-wrap:wrap!important}
+.routespro-dashboard .ffad-pagination button,
+.rp-client-premium .rp-pagination button{min-width:31px!important;min-height:31px!important;padding:4px 7px!important;border-radius:8px!important;font-size:10px!important}
+
+/* Evidencias em grelha adaptativa. */
+.routespro-dashboard .ffad-evidence-thumbs,
+.rp-client-premium .rp-evidence-thumbs{
+  display:grid!important;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))!important;gap:8px!important;
+}
+.routespro-dashboard .ffad-evidence-thumb,
+.rp-client-premium .rp-evidence-thumb{
+  position:relative!important;display:grid!important;grid-template-rows:auto auto!important;min-width:0!important;overflow:hidden!important;
+  border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:11px!important;background:var(--ff-surface,#fff)!important;box-shadow:0 4px 14px rgba(15,23,42,.04)!important;
+}
+.routespro-dashboard .ffad-evidence-thumb img,
+.rp-client-premium .rp-evidence-thumb img{display:block!important;width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important}
+.routespro-dashboard .ffad-evidence-thumb span,
+.rp-client-premium .rp-evidence-thumb span{
+  position:static!important;display:block!important;min-height:31px!important;padding:7px 8px!important;background:var(--ff-surface,#fff)!important;color:var(--ff-text,#0f172a)!important;
+  font-size:9px!important;font-weight:750!important;line-height:1.3!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+.routespro-dashboard :is(.ffad-evidence-store-card,.ffad-evidence-date-card),
+.rp-client-premium :is(.rp-evidence-store-card,.rp-evidence-date-card){border-color:var(--ff-border,#dbe4ef)!important;border-radius:11px!important;background:var(--ff-surface,#fff)!important}
+.routespro-dashboard :is(.ffad-evidence-store-head,.ffad-evidence-date-head),
+.rp-client-premium :is(.rp-evidence-store-head,.rp-evidence-date-head){padding:9px 10px!important;background:var(--ff-analytics-soft)!important}
+
+/* Estados. */
+:where(.routespro-dashboard,.rp-client-premium) :is(.ffad-empty,.ffad-custom-empty,.rp-chart-empty,.ff-lazy-error,.ff-analytics-state){
+  display:flex!important;min-height:92px!important;align-items:center!important;justify-content:center!important;padding:18px!important;
+  border:1px dashed var(--ff-border,#dbe4ef)!important;border-radius:11px!important;background:var(--ff-analytics-soft)!important;color:var(--ff-muted,#64748b)!important;text-align:center!important;font-size:11px!important;line-height:1.5!important;
+}
+:where(.routespro-dashboard,.rp-client-premium) .ff-analytics-state.is-error{border-color:color-mix(in srgb,var(--ff-danger-text,#b91c1c) 30%,var(--ff-border,#dbe4ef))!important;background:var(--ff-analytics-danger-soft)!important;color:var(--ff-danger-text,#b91c1c)!important}
+:where(.routespro-dashboard,.rp-client-premium) .ff-analytics-state.is-loading{background:linear-gradient(90deg,var(--ff-analytics-soft),var(--ff-surface,#fff),var(--ff-analytics-soft));background-size:220% 100%;animation:ffAnalyticsShimmer 1.5s linear infinite}
+@keyframes ffAnalyticsShimmer{to{background-position:-220% 0}}
+
+@media (max-width:1180px){
+  .routespro-dashboard .ffad-main{grid-template-columns:1fr!important}
+  .routespro-dashboard .ffad-metric.is-compact-widget,
+  .routespro-dashboard .ffad-metric.kpi{grid-column:span 6!important}
+  .routespro-dashboard .ffad-metric.bar,
+  .routespro-dashboard .ffad-metric.line,
+  .routespro-dashboard .ffad-metric.pie,
+  .rp-client-premium .rp-analytics-visual-card{grid-column:span 12!important}
+}
+
+@media (max-width:760px){
+  .routespro-dashboard .ffad-shell,
+  .rp-client-premium .rp-analytics-workspace{gap:10px!important}
+  .routespro-dashboard .ffad-head{padding:14px!important}
+  .routespro-dashboard .ffad-filters,
+  .rp-client-premium .rp-analytics-filters{grid-template-columns:1fr 1fr!important;padding:10px!important;border-radius:14px!important}
+  .routespro-dashboard .ffad-reportbar,
+  .rp-client-premium .rp-analytics-reportbar{grid-column:1/-1!important;align-items:flex-start!important;padding:10px!important}
+  .routespro-dashboard .ffad-report-actions,
+  .rp-client-premium .rp-analytics-reportactions{width:100%!important;justify-content:flex-start!important}
+  .routespro-dashboard .ffad-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  .routespro-dashboard .ffad-kpi{min-height:82px!important;padding:10px!important}
+  .routespro-dashboard .ffad-kpi strong{font-size:22px!important}
+  .routespro-dashboard .ffad-custom-head,
+  .rp-client-premium .rp-analytics-dashboard-head{padding:11px!important;gap:8px!important}
+  .routespro-dashboard .ffad-custom-grid,
+  .rp-client-premium .rp-analytics-visual-grid{display:flex!important;flex-direction:column!important;padding:7px!important;gap:8px!important}
+  .routespro-dashboard .ffad-metric,
+  .routespro-dashboard .ffad-metric.is-compact-widget,
+  .routespro-dashboard .ffad-metric.kpi,
+  .routespro-dashboard .ffad-metric.bar,
+  .routespro-dashboard .ffad-metric.line,
+  .routespro-dashboard .ffad-metric.pie,
+  .rp-client-premium .rp-analytics-visual-card,
+  .rp-client-premium .rp-analytics-table-card{width:100%!important;grid-column:auto!important}
+  .routespro-dashboard .ffad-metric-label,
+  .rp-client-premium .rp-analytics-card-head,
+  .rp-client-premium .rp-analytics-table-card>.rp-panel-head{padding:11px 10px 8px!important}
+  .routespro-dashboard .ffad-metric-body{padding:9px 10px 10px!important}
+  .routespro-dashboard .ffad-chart{min-height:180px!important}
+  .routespro-dashboard .ffad-chart svg{height:190px!important;min-width:560px!important}
+  .routespro-dashboard .ffad-share-row{grid-template-columns:1fr!important;gap:5px!important}
+  .routespro-dashboard .ffad-share-row>em{white-space:normal!important}
+  .routespro-dashboard .ffad-table-controls,
+  .rp-client-premium .rp-table-tools{align-items:stretch!important}
+  .routespro-dashboard .ffad-table-controls>* ,
+  .rp-client-premium .rp-table-tools>*{max-width:100%!important}
+  .routespro-dashboard .ffad-evidence-thumbs,
+  .rp-client-premium .rp-evidence-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+
+  /* Tabelas genericas tornam-se cartoes legiveis no mobile. */
+  .routespro-dashboard table.ff-table.ff-table-cards,
+  .rp-client-premium table.ff-table.ff-table-cards{display:block!important;width:100%!important;min-width:0!important;border:0!important}
+  .routespro-dashboard table.ff-table.ff-table-cards thead,
+  .rp-client-premium table.ff-table.ff-table-cards thead{display:none!important}
+  .routespro-dashboard table.ff-table.ff-table-cards tbody,
+  .rp-client-premium table.ff-table.ff-table-cards tbody{display:grid!important;gap:7px!important}
+  .routespro-dashboard table.ff-table.ff-table-cards tr,
+  .rp-client-premium table.ff-table.ff-table-cards tr{display:block!important;padding:8px 10px!important;border:1px solid var(--ff-border,#dbe4ef)!important;border-radius:11px!important;background:var(--ff-surface,#fff)!important}
+  .routespro-dashboard table.ff-table.ff-table-cards td,
+  .rp-client-premium table.ff-table.ff-table-cards td{display:grid!important;grid-template-columns:minmax(90px,34%) minmax(0,1fr)!important;gap:7px!important;width:100%!important;padding:7px 0!important;border:0!important;border-top:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 65%,transparent)!important;text-align:left!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  .routespro-dashboard table.ff-table.ff-table-cards td:first-child,
+  .rp-client-premium table.ff-table.ff-table-cards td:first-child{border-top:0!important}
+  .routespro-dashboard table.ff-table.ff-table-cards td:before,
+  .rp-client-premium table.ff-table.ff-table-cards td:before{content:attr(data-label)!important;color:var(--ff-label,#475569)!important;font-size:8px!important;font-weight:900!important;letter-spacing:.055em!important;text-transform:uppercase!important}
+}
+
+@media (max-width:430px){
+  .routespro-dashboard .ffad-filters,
+  .rp-client-premium .rp-analytics-filters{grid-template-columns:1fr!important}
+  .routespro-dashboard .ffad-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .routespro-dashboard .ffad-custom-head>em,
+  .rp-client-premium .rp-analytics-dashboard-head>em{padding-inline:7px!important;font-size:8px!important}
+  .routespro-dashboard table.ff-table.ff-table-cards td,
+  .rp-client-premium table.ff-table.ff-table-cards td{grid-template-columns:1fr!important;gap:2px!important}
+}
+
+@media (prefers-reduced-motion:reduce){.ff-analytics-state.is-loading{animation:none!important}}
+
+/* 2.2.334 Smart Evergreen Dashboard */
+.routespro-dashboard .ffad-smart-card,
+.rp-client-premium .rp-smart-card{grid-column:1/-1!important}
+.routespro-dashboard .ffad-smart-summary,
+.rp-client-premium .rp-smart-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:0 0 12px}
+.routespro-dashboard .ffad-smart-summary>div,
+.rp-client-premium .rp-smart-summary>div{padding:12px;border:1px solid var(--ff-border,#dbe4ef);border-radius:13px;background:color-mix(in srgb,var(--ff-surface,#fff) 88%,var(--ff-muted-surface,#f8fafc));min-width:0}
+.routespro-dashboard .ffad-smart-summary span,
+.rp-client-premium .rp-smart-summary span{display:block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ff-muted,#64748b)}
+.routespro-dashboard .ffad-smart-summary strong,
+.rp-client-premium .rp-smart-summary strong{display:block;margin-top:4px;font-size:24px;line-height:1;color:var(--ff-heading,#0f172a)}
+.routespro-dashboard .ffad-smart-questions,
+.rp-client-premium .rp-smart-questions,
+.routespro-dashboard .ffad-smart-breakdown,
+.rp-client-premium .rp-smart-breakdown{display:grid;gap:8px}
+.routespro-dashboard .ffad-smart-section-title,
+.rp-client-premium .rp-smart-section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:12px 0 4px}
+.routespro-dashboard .ffad-smart-section-title strong,
+.rp-client-premium .rp-smart-section-title strong{font-size:13px;color:var(--ff-heading,#0f172a)}
+.routespro-dashboard .ffad-smart-section-title small,
+.rp-client-premium .rp-smart-section-title small{font-size:10px;color:var(--ff-muted,#64748b)}
+.routespro-dashboard .ffad-smart-question,
+.rp-client-premium .rp-smart-question{border:1px solid var(--ff-border,#dbe4ef);border-radius:13px;background:var(--ff-surface,#fff);overflow:hidden}
+.routespro-dashboard .ffad-smart-question>summary,
+.rp-client-premium .rp-smart-question>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 13px;cursor:pointer;list-style:none;background:color-mix(in srgb,var(--ff-surface,#fff) 92%,var(--ff-muted-surface,#f8fafc))}
+.routespro-dashboard .ffad-smart-question>summary::-webkit-details-marker,
+.rp-client-premium .rp-smart-question>summary::-webkit-details-marker{display:none}
+.routespro-dashboard .ffad-smart-question>summary span,
+.rp-client-premium .rp-smart-question>summary span{font-weight:800;color:var(--ff-heading,#0f172a)}
+.routespro-dashboard .ffad-smart-question>summary small,
+.rp-client-premium .rp-smart-question>summary small{font-size:10px;color:var(--ff-muted,#64748b);white-space:nowrap}
+.routespro-dashboard .ffad-smart-question-body,
+.rp-client-premium .rp-smart-question-body{padding:12px 13px;border-top:1px solid var(--ff-border,#dbe4ef)}
+.routespro-dashboard .ffad-smart-chips,
+.rp-client-premium .rp-smart-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.routespro-dashboard .ffad-smart-chip,
+.rp-client-premium .rp-smart-chips>span{display:flex;gap:8px;align-items:center;padding:7px 9px;border:1px solid var(--ff-border,#dbe4ef);border-radius:999px;background:var(--ff-surface,#fff)}
+.routespro-dashboard .ffad-smart-chip b,
+.rp-client-premium .rp-smart-chips b{font-size:10px;color:var(--ff-muted,#64748b)}
+.routespro-dashboard .ffad-smart-chip em,
+.rp-client-premium .rp-smart-chips em{font-style:normal;font-weight:900;color:var(--ff-heading,#0f172a)}
+.routespro-dashboard .ffad-smart-dist,
+.rp-client-premium .rp-smart-dist{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px}
+.routespro-dashboard .ffad-smart-dist>span,
+.rp-client-premium .rp-smart-dist>span{display:flex;justify-content:space-between;gap:8px;padding:7px 9px;border-radius:9px;background:var(--ff-muted-surface,#f8fafc)}
+.routespro-dashboard .ffad-smart-dist b,
+.rp-client-premium .rp-smart-dist b{font-size:11px;color:var(--ff-heading,#0f172a);overflow-wrap:anywhere}
+.routespro-dashboard .ffad-smart-dist em,
+.rp-client-premium .rp-smart-dist em{font-style:normal;font-weight:900;color:var(--ff-accent,#9a4a17)}
+.routespro-dashboard .ffad-smart-samples,
+.rp-client-premium .rp-smart-samples{display:grid;gap:6px;margin-top:10px}
+.routespro-dashboard .ffad-smart-samples p,
+.rp-client-premium .rp-smart-samples p{margin:0;padding:8px 9px;border-left:3px solid var(--ff-accent,#9a4a17);background:var(--ff-muted-surface,#f8fafc);font-size:11px;color:var(--ff-text,#334155)}
+.routespro-dashboard .ffad-smart-samples strong,
+.rp-client-premium .rp-smart-samples strong{display:block;margin-bottom:2px;color:var(--ff-heading,#0f172a)}
+@media(max-width:800px){
+  .routespro-dashboard .ffad-smart-summary,
+  .rp-client-premium .rp-smart-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .routespro-dashboard .ffad-smart-question>summary,
+  .rp-client-premium .rp-smart-question>summary{align-items:flex-start;flex-direction:column;gap:4px}
+  .routespro-dashboard .ffad-smart-question>summary small,
+  .rp-client-premium .rp-smart-question>summary small{white-space:normal}
+}
+
+/* 2.2.337, mobile Analytics card reflow and native safe area. */
+@media (max-width:760px){
+  .routespro-dashboard .ffad-metric-label,
+  .rp-client-premium .rp-analytics-card-head,
+  .rp-client-premium .rp-analytics-table-card>.rp-panel-head{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:8px!important;
+  }
+  .routespro-dashboard .ffad-metric-copy,
+  .rp-client-premium .rp-analytics-card-copy,
+  .rp-client-premium .rp-analytics-card-head>*,
+  .rp-client-premium .rp-analytics-table-card>.rp-panel-head>*{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .routespro-dashboard .ffad-metric-eyebrow,
+  .rp-client-premium .rp-analytics-eyebrow{display:none!important}
+  .routespro-dashboard .ffad-metric-label strong,
+  .rp-client-premium .rp-analytics-card-copy h4,
+  .rp-client-premium .rp-analytics-table-card>.rp-panel-head h4{
+    width:100%!important;
+    max-width:100%!important;
+    writing-mode:horizontal-tb!important;
+    text-orientation:mixed!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:break-word!important;
+    hyphens:auto!important;
+  }
+  .routespro-dashboard .ffad-metric-label>span{
+    justify-self:start!important;
+    width:auto!important;
+    max-width:100%!important;
+  }
+  .rp-client-premium .rp-analytics-card-meta{
+    display:flex!important;
+    grid-column:1!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    justify-content:flex-start!important;
+    align-items:center!important;
+    flex-wrap:wrap!important;
+    gap:6px!important;
+  }
+  .rp-client-premium .rp-analytics-card-meta .rp-pill{
+    flex:0 1 auto!important;
+    max-width:100%!important;
+    white-space:normal!important;
+    line-height:1.2!important;
+    text-align:center!important;
+  }
+  .rp-client-premium #rpcp-analytics-panel .rp-analytics-visual-card{min-height:0!important}
+  body.fieldflow-mobile-webview .rp-client-premium #rpcp-analytics-panel,
+  html[data-fieldflow-display-mode="standalone"] .rp-client-premium #rpcp-analytics-panel{
+    padding-bottom:calc(188px + env(safe-area-inset-bottom,0px))!important;
+    scroll-padding-bottom:calc(200px + env(safe-area-inset-bottom,0px))!important;
+  }
+  body.fieldflow-mobile-webview .rp-client-premium #rpcp-analytics-panel .rp-analytics-workspace,
+  html[data-fieldflow-display-mode="standalone"] .rp-client-premium #rpcp-analytics-panel .rp-analytics-workspace{
+    padding-bottom:24px!important;
+  }
+}

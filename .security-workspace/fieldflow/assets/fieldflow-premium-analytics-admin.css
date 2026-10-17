@@ -1,0 +1,122 @@
+/* FieldFlow 2.2.245, experiencia premium no Centro de Analytics. */
+.ff-fieldflow-admin .ff-analytics-admin{
+  --ff-analytics-admin-soft:color-mix(in srgb,var(--ff-canvas,#f4f7fb) 68%,var(--ff-surface,#fff));
+  --ff-analytics-admin-primary-soft:color-mix(in srgb,var(--ff-primary,#2563eb) 9%,var(--ff-surface,#fff));
+  --ff-analytics-admin-radius:var(--ff-radius,16px);
+}
+.ff-fieldflow-admin .ff-analytics-hero{padding:18px!important;border-radius:var(--ff-analytics-admin-radius)!important;background:linear-gradient(135deg,var(--ff-header-start,#0f172a),var(--ff-header-end,var(--ff-primary,#2563eb)))!important;box-shadow:0 12px 32px rgba(15,23,42,.10)!important}
+.ff-fieldflow-admin .ff-analytics-hero h2{font-size:22px!important;color:var(--ff-header-title-text,#fff)!important}
+.ff-fieldflow-admin .ff-analytics-hero p{font-size:12px!important;color:var(--ff-header-body-text,rgba(255,255,255,.78))!important}
+.ff-fieldflow-admin .ff-analytics-summary{gap:9px!important}
+.ff-fieldflow-admin .ff-analytics-summary .ff-analytics-kpi{min-height:82px!important;padding:12px!important;border-color:var(--ff-border,#dbe4ef)!important;border-radius:12px!important;background:linear-gradient(180deg,var(--ff-surface,#fff),var(--ff-analytics-admin-soft))!important;box-shadow:0 5px 17px rgba(15,23,42,.04)!important}
+.ff-fieldflow-admin .ff-analytics-kpi span{font-size:9px!important;color:var(--ff-label,#475569)!important}
+.ff-fieldflow-admin .ff-analytics-kpi strong{font-size:23px!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+.ff-fieldflow-admin .ff-analytics-builder-grid{gap:12px!important}
+.ff-fieldflow-admin .ff-analytics-step{padding:15px!important;border-color:var(--ff-border,#dbe4ef)!important;border-radius:14px!important;background:var(--ff-surface,#fff)!important;box-shadow:0 7px 22px rgba(15,23,42,.04)!important}
+.ff-fieldflow-admin .ff-analytics-step h3{font-size:16px!important;margin-bottom:12px!important;color:var(--ff-heading,var(--ff-text,#0f172a))!important}
+.ff-fieldflow-admin .ff-analytics-step h3:before{width:25px!important;height:25px!important;border-radius:8px!important;background:var(--ff-analytics-admin-primary-soft)!important;color:var(--ff-primary,#2563eb)!important}
+.ff-fieldflow-admin .ff-analytics-admin .ff-form-grid[data-ff-context="analytics-form"]{gap:10px!important}
+.ff-fieldflow-admin .ff-analytics-admin .ff-form-grid[data-ff-context="analytics-form"]>p{margin:0!important;padding:10px!important;border:1px solid color-mix(in srgb,var(--ff-border,#dbe4ef) 72%,transparent)!important;border-radius:10px!important;background:var(--ff-analytics-admin-soft)!important}
+.ff-fieldflow-admin .ff-analytics-admin label strong{font-size:11px!important;color:var(--ff-label,#475569)!important}
+.ff-fieldflow-admin .ff-analytics-admin input[type=text],
+.ff-fieldflow-admin .ff-analytics-admin input[type=number],
+.ff-fieldflow-admin .ff-analytics-admin input[type=search],
+.ff-fieldflow-admin .ff-analytics-admin select,
+.ff-fieldflow-admin .ff-analytics-admin textarea{min-height:38px!important;border-color:var(--ff-border,#dbe4ef)!important;border-radius:9px!important;background:var(--ff-surface,#fff)!important;color:var(--ff-text,#0f172a)!important}
+.ff-fieldflow-admin .ff-analytics-admin input:focus,
+.ff-fieldflow-admin .ff-analytics-admin select:focus,
+.ff-fieldflow-admin .ff-analytics-admin textarea:focus{border-color:var(--ff-primary,#2563eb)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--ff-primary,#2563eb) 18%,transparent)!important}
+.ff-fieldflow-admin .ff-analytics-admin .ff-table-scroll{border-color:var(--ff-border,#dbe4ef)!important;border-radius:12px!important;background:var(--ff-surface,#fff)!important}
+.ff-fieldflow-admin .ff-analytics-admin table.widefat{min-width:840px!important}
+.ff-fieldflow-admin .ff-analytics-admin table.widefat th{position:sticky!important;top:32px!important;z-index:2!important;background:var(--ff-analytics-admin-soft)!important;color:var(--ff-table-header-text,var(--ff-label,#475569))!important;font-size:9px!important}
+.ff-fieldflow-admin .ff-analytics-admin table.widefat td{padding-block:10px!important;color:var(--ff-text,#0f172a)!important}
+.ff-fieldflow-admin .ff-widget-type{background:var(--ff-analytics-admin-primary-soft)!important;color:var(--ff-primary,#2563eb)!important;border:1px solid color-mix(in srgb,var(--ff-primary,#2563eb) 18%,var(--ff-border,#dbe4ef))!important}
+
+/* Pre-visualizacao viva do widget configurado. */
+.ff-fieldflow-admin .ff-analytics-widget-preview{
+  grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.42fr);gap:12px;align-items:stretch;
+  margin-top:2px;padding:12px;border:1px solid color-mix(in srgb,var(--ff-primary,#2563eb) 18%,var(--ff-border,#dbe4ef));border-radius:12px;
+  background:linear-gradient(135deg,var(--ff-analytics-admin-primary-soft),var(--ff-surface,#fff) 62%,color-mix(in srgb,var(--ff-accent,#06b6d4) 8%,var(--ff-surface,#fff)));
+}
+.ff-fieldflow-admin .ff-analytics-widget-preview-copy{min-width:0}
+.ff-fieldflow-admin .ff-analytics-widget-preview-copy>span{display:block;margin-bottom:4px;color:var(--ff-label,#475569);font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+.ff-fieldflow-admin .ff-analytics-widget-preview-copy h4{margin:0;color:var(--ff-heading,var(--ff-text,#0f172a));font-size:15px;line-height:1.25;overflow-wrap:anywhere}
+.ff-fieldflow-admin .ff-analytics-widget-preview-copy p{margin:5px 0 0;color:var(--ff-muted,#64748b);font-size:10px;line-height:1.45}
+.ff-fieldflow-admin .ff-analytics-widget-preview-visual{display:flex;min-height:92px;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--ff-border,#dbe4ef);border-radius:10px;background:var(--ff-surface,#fff)}
+.ff-fieldflow-admin .ff-analytics-widget-preview-kpi{font-size:30px;font-weight:900;color:var(--ff-heading,var(--ff-text,#0f172a))}
+.ff-fieldflow-admin .ff-analytics-widget-preview-bars{display:flex;width:82%;height:58px;align-items:flex-end;gap:6px}
+.ff-fieldflow-admin .ff-analytics-widget-preview-bars i{display:block;flex:1;min-width:7px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--ff-primary,#2563eb),var(--ff-accent,#06b6d4))}
+.ff-fieldflow-admin .ff-analytics-widget-preview-line{width:82%;height:58px}
+.ff-fieldflow-admin .ff-analytics-widget-preview-line svg{display:block;width:100%;height:100%}
+.ff-fieldflow-admin .ff-analytics-widget-preview-table{display:grid;width:86%;gap:5px}
+.ff-fieldflow-admin .ff-analytics-widget-preview-table i{display:block;height:8px;border-radius:999px;background:var(--ff-analytics-admin-soft)}
+.ff-fieldflow-admin .ff-analytics-widget-preview-images{display:grid;width:86%;grid-template-columns:repeat(3,1fr);gap:5px}
+.ff-fieldflow-admin .ff-analytics-widget-preview-images i{display:block;aspect-ratio:4/3;border-radius:6px;background:linear-gradient(135deg,var(--ff-analytics-admin-primary-soft),color-mix(in srgb,var(--ff-accent,#06b6d4) 22%,var(--ff-surface,#fff)))}
+.ff-fieldflow-admin .ff-analytics-preview-badge{display:inline-flex;margin-top:7px;padding:4px 7px;border-radius:999px;background:var(--ff-analytics-admin-primary-soft);color:var(--ff-primary,#2563eb);font-size:9px;font-weight:850;text-transform:uppercase}
+
+@media (max-width:1180px){
+  .ff-fieldflow-admin .ff-analytics-widget-preview{grid-template-columns:1fr}
+}
+@media (max-width:782px){
+  .ff-fieldflow-admin .ff-analytics-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .ff-fieldflow-admin .ff-analytics-widget-preview{padding:10px}
+  .ff-fieldflow-admin .ff-analytics-admin table.widefat th{top:46px!important}
+}
+
+/* 2.2.257, editor integrado de dashboards */
+.ff-fieldflow-admin .ff-dashboard-content-editor{margin-top:18px;padding-top:16px;border-top:1px solid var(--ff-border,#dbe4ef)}
+.ff-fieldflow-admin .ff-dashboard-content-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ff-fieldflow-admin .ff-dashboard-content-head h4{margin:0;color:var(--ff-heading,var(--ff-text,#0f172a));font-size:15px}
+.ff-fieldflow-admin .ff-dashboard-content-head p{margin:4px 0 0;color:var(--ff-muted,#64748b);font-size:11px;line-height:1.45}
+.ff-fieldflow-admin .ff-dashboard-content-empty{padding:14px;border:1px dashed var(--ff-border,#cbd5e1);border-radius:11px;background:var(--ff-analytics-admin-soft);color:var(--ff-muted,#64748b)}
+.ff-fieldflow-admin .ff-dashboard-content-table select{min-width:150px;max-width:220px}
+.ff-fieldflow-admin .ff-dashboard-content-table label{display:inline-flex;align-items:center;gap:5px;font-size:11px;line-height:1.8}
+.ff-fieldflow-admin .ff-dashboard-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ff-fieldflow-admin .ff-dashboard-widget-count{display:inline-flex;margin-top:6px;padding:4px 7px;border-radius:999px;background:var(--ff-analytics-admin-primary-soft);color:var(--ff-primary,#2563eb);font-size:9px;font-weight:850}
+@media(max-width:782px){
+  .ff-fieldflow-admin .ff-dashboard-content-head{flex-direction:column}
+  .ff-fieldflow-admin .ff-dashboard-content-head .button{width:100%;text-align:center}
+  .ff-fieldflow-admin .ff-dashboard-content-table select{min-width:132px}
+}
+
+/* 2.2.258, hotfix de largura e linhas tapadas no Centro de Atribuicoes */
+body.ff-fieldflow-admin .ff-analytics-admin .ff-analytics-builder-grid.is-dashboard-editing{grid-template-columns:minmax(0,1fr)!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-analytics-builder-grid.is-dashboard-editing>#ff-analytics-dashboard-editor{grid-column:1/-1;min-width:0;width:100%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-table-scroll{width:100%;max-width:100%;overflow-x:auto!important;overflow-y:auto!important}
+body.ff-fieldflow-admin .ff-analytics-admin table.widefat{table-layout:auto!important}
+body.ff-fieldflow-admin .ff-analytics-admin table.widefat th{top:0!important}
+body.ff-fieldflow-admin .ff-analytics-admin table.widefat tbody tr,
+body.ff-fieldflow-admin .ff-analytics-admin table.widefat tbody td{height:auto!important;max-height:none!important;overflow:visible!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table{min-width:1080px!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table th:nth-child(1){width:34%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table th:nth-child(2){width:21%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table th:nth-child(3){width:19%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table th:nth-child(4){width:10%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table th:nth-child(5){width:96px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table{min-width:1120px!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(1){width:58px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(2){width:28%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(3){width:20%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(4){width:20%}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(5){width:90px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-list-table th:nth-child(6){width:286px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-group-table{min-width:940px!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table{min-width:1540px!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(1){width:88px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(2){width:130px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(3){width:150px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(4){width:300px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(5){width:250px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(6){width:220px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(7){width:190px}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-widget-list-table th:nth-child(8){width:142px}
+body.ff-fieldflow-admin .ff-analytics-admin :is(.ff-dashboard-list-table,.ff-dashboard-widget-list-table,.ff-dashboard-content-table) th:last-child,
+body.ff-fieldflow-admin .ff-analytics-admin :is(.ff-dashboard-list-table,.ff-dashboard-widget-list-table,.ff-dashboard-content-table) td:last-child{position:sticky!important;right:0!important;z-index:3;background:var(--ff-surface,#fff)!important;box-shadow:-8px 0 16px rgba(15,23,42,.04)}
+body.ff-fieldflow-admin .ff-analytics-admin :is(.ff-dashboard-list-table,.ff-dashboard-widget-list-table) th:last-child{z-index:4;background:var(--ff-analytics-admin-soft)!important}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-actions,
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-actions form{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:0}
+body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-actions .button{position:static!important;display:inline-flex!important;align-items:center;justify-content:center;min-height:32px!important;margin:0!important;line-height:1.1!important;white-space:nowrap!important;overflow:visible!important;transform:none!important}
+@media(max-width:782px){
+  body.ff-fieldflow-admin .ff-analytics-admin .ff-analytics-builder-grid.is-dashboard-editing{grid-template-columns:1fr!important}
+  body.ff-fieldflow-admin .ff-analytics-admin .ff-dashboard-content-table{min-width:980px!important}
+}

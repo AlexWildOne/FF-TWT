@@ -1,0 +1,362 @@
+/* FieldFlow shared responsive runtime, build 2.2.211 */
+:root{
+  --ff-safe-top:env(safe-area-inset-top,0px);
+  --ff-safe-right:env(safe-area-inset-right,0px);
+  --ff-safe-bottom:env(safe-area-inset-bottom,0px);
+  --ff-safe-left:env(safe-area-inset-left,0px);
+  --ff-touch:44px;
+  --ff-runtime-vh:100dvh;
+}
+
+body.fieldflow-responsive-runtime{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  overflow-wrap:anywhere;
+}
+
+body.fieldflow-responsive-runtime.ff-keyboard-open{
+  --ff-safe-bottom:0px;
+}
+
+.ff-responsive-runtime{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  isolation:isolate;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.ff-responsive-runtime *,
+.ff-responsive-runtime *::before,
+.ff-responsive-runtime *::after{
+  box-sizing:border-box;
+}
+
+.ff-responsive-runtime :where(img,video,canvas,svg,iframe){
+  max-width:100%;
+}
+
+.ff-responsive-runtime :where(img,video,canvas){
+  height:auto;
+}
+
+.ff-responsive-runtime :where(.rp-shell,.rp-panel,.rp-panel-card,.rp-premium-card,.rp-card,.rp-grid,.rp-row,.rp-toolbar,.rp-table-wrap,.rp-table-scroll,.ff-table-scroll,.routespro-form-section,.routespro-form-field,.routespro-form-col){
+  min-width:0;
+  max-width:100%;
+}
+
+.ff-responsive-runtime :where(h1,h2,h3,h4,h5,h6,p,span,strong,small,label,legend,td,th,a,button){
+  overflow-wrap:anywhere;
+}
+
+.ff-responsive-runtime :where(button,[type="button"],[type="submit"],[type="reset"],.button,.rp-btn,.rp-cta,.rp-small,.ffb-front-btn,.routespro-form-btn){
+  min-height:var(--ff-touch);
+  touch-action:manipulation;
+}
+
+.ff-responsive-runtime :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:3px solid rgba(37,99,235,.34);
+  outline-offset:2px;
+}
+
+.ff-responsive-runtime :where(input,select,textarea,button){
+  max-width:100%;
+}
+
+.ff-responsive-runtime :where(input,select,textarea){
+  border-radius:max(10px,var(--ff-input-radius,10px));
+}
+
+.ff-responsive-runtime :where(input[type="file"]){
+  width:100%;
+  min-height:var(--ff-touch);
+}
+
+.ff-responsive-runtime :where(.rp-table-wrap,.rp-table-scroll,.ff-table-scroll,.ffb-table-wrap,.routespro-product-matrix,.routespro-order-table){
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-inline:contain;
+  scrollbar-gutter:stable;
+  scroll-behavior:smooth;
+}
+
+.ff-responsive-runtime :where(.rp-table-wrap,.rp-table-scroll,.ff-table-scroll,.ffb-table-wrap)[tabindex="0"]:focus-visible{
+  outline:3px solid rgba(37,99,235,.24);
+  outline-offset:2px;
+}
+
+.ff-responsive-runtime .ff-table-scroll{
+  position:relative;
+  border-radius:inherit;
+}
+
+.ff-responsive-runtime .ff-table-scroll::after{
+  content:"";
+  position:sticky;
+  right:0;
+  display:block;
+  float:right;
+  width:18px;
+  height:1px;
+  pointer-events:none;
+}
+
+.ff-responsive-runtime .ff-table-scroll[data-scroll-end="0"]{
+  box-shadow:inset -14px 0 16px -18px rgba(15,23,42,.6);
+}
+
+.ff-responsive-runtime :where(table){
+  border-collapse:collapse;
+}
+
+.ff-responsive-runtime :where(.rp-panel,.routespro-form-step,.routespro-form-field,[id]){
+  scroll-margin-top:calc(14px + var(--ff-safe-top));
+}
+
+.ff-responsive-runtime :where(details>summary){
+  min-height:var(--ff-touch);
+  touch-action:manipulation;
+}
+
+body.fieldflow-mobile-webview .fieldflow-mobile-viewport{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow-x:clip;
+}
+
+body.fieldflow-mobile-webview .ff-responsive-runtime{
+  padding-left:max(0px,var(--ff-safe-left));
+  padding-right:max(0px,var(--ff-safe-right));
+}
+
+/* Tablet, preserve information density without squeezing desktop grids. */
+@media (min-width:768px) and (max-width:1180px){
+  .ff-responsive-runtime :where(.rp-hero-grid,.rp-metrics,.rp-stats,.rp-kpi-grid,.rp-toolbar,.rp-two){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-grid){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .ff-responsive-runtime :where(.rp-panel-card,.rp-premium-card,.rp-card){
+    padding:clamp(14px,2vw,20px);
+  }
+
+  .ff-responsive-runtime :where(.rp-tabbar button){
+    min-width:132px;
+  }
+}
+
+/* Phone and narrow split-screen behaviour. */
+@media (max-width:767px){
+  :root{--ff-touch:46px}
+
+  .ff-responsive-runtime{
+    border-radius:0;
+  }
+
+  .ff-responsive-runtime :where(input:not([type="checkbox"]):not([type="radio"]),select,textarea){
+    font-size:16px!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-shell){
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-hero,.rp-card,.rp-panel-card,.rp-premium-card,.routespro-form-section,.rpa-month-shell){
+    border-radius:18px!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-hero){
+    padding:18px!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-hero h1,.rp-hero h2){
+    font-size:clamp(25px,8vw,32px)!important;
+    line-height:1.08!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-panel-head,.rp-section-head,.ffb-front-toolbar,.rp-table-tools,.rp-actions,.routespro-form-actions,.routespro-form-wizard-actions){
+    align-items:stretch;
+  }
+
+  .ff-responsive-runtime :where(.rp-panel-head>*,.rp-section-head>*,.ffb-front-toolbar>*){
+    min-width:0;
+  }
+
+  .ff-responsive-runtime :where(.rp-panel-head h3,.rp-panel-head h4){
+    font-size:clamp(19px,6vw,24px)!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-grid,.rp-hero-grid,.rp-metrics,.rp-stats,.rp-kpi-grid,.rp-toolbar,.rp-two,.rp-route-layout,.rp-report-grid,.rp-ai-grid,.rp-analytics-visual-grid,.rp-analytics-grid){
+    grid-template-columns:1fr!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-row,.rp-actions,.rp-stop-actions,.rp-table-tools,.routespro-form-actions,.routespro-form-wizard-actions){
+    gap:8px;
+  }
+
+  .ff-responsive-runtime :where(.rp-row>button,.rp-actions>button,.routespro-form-actions>button,.routespro-form-wizard-actions>button){
+    flex:1 1 auto;
+  }
+
+  .ff-responsive-runtime :where(.rp-toolbar select,.rp-toolbar input,.rp-filters select,.rp-filters input,.rp-analytics-filters select,.rp-analytics-filters input){
+    width:100%;
+  }
+
+  .ff-responsive-runtime :where(.rp-route-switch){
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ff-responsive-runtime :where(.rp-route-switch button){
+    width:100%;
+    min-width:0;
+  }
+
+  .ff-responsive-runtime :where(.rp-tabbar){
+    scroll-snap-type:x proximity;
+    overscroll-behavior-inline:contain;
+  }
+
+  .ff-responsive-runtime :where(.rp-tabbar button){
+    flex:0 0 auto!important;
+    min-width:116px!important;
+    min-height:48px;
+    scroll-snap-align:center;
+  }
+
+  .ff-responsive-runtime :where(.rp-table-wrap,.rp-table-scroll,.ff-table-scroll,.ffb-table-wrap){
+    border-radius:14px;
+  }
+
+  .ff-responsive-runtime :where(.rp-pagination){
+    display:flex;
+    width:100%;
+    gap:8px;
+  }
+
+  .ff-responsive-runtime :where(.rp-pagination button){
+    flex:1 1 0;
+    margin:0!important;
+  }
+
+  .ff-responsive-runtime :where(.rpa-month-summary,.rp-analytics-fronts-summary){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .ff-responsive-runtime :where(.routespro-upload-input-row){
+    grid-template-columns:1fr!important;
+  }
+
+  .ff-responsive-runtime :where(.routespro-upload-input-row input[type="file"]){
+    width:100%;
+  }
+
+  body.ff-keyboard-open .rp-premium-shell.rp-app .rp-tabs,
+  body.ff-keyboard-open .rp-client-premium .rp-tabs{
+    display:none!important;
+  }
+}
+
+/* Native WebView and installed PWA use a true bottom application bar. */
+@media (max-width:767px){
+  body.fieldflow-mobile-webview .rp-premium-shell.rp-app .rp-tabs,
+  body.fieldflow-mobile-webview .rp-client-premium .rp-tabs,
+  html[data-fieldflow-display-mode="standalone"] .rp-premium-shell.rp-app .rp-tabs,
+  html[data-fieldflow-display-mode="standalone"] .rp-client-premium .rp-tabs{
+    position:fixed!important;
+    left:max(8px,var(--ff-safe-left))!important;
+    right:max(8px,var(--ff-safe-right))!important;
+    bottom:max(8px,var(--ff-safe-bottom))!important;
+    width:auto!important;
+    margin:0!important;
+    padding:0!important;
+    z-index:2147483000!important;
+  }
+
+  body.fieldflow-mobile-webview .rp-premium-shell.rp-app .rp-tabbar,
+  body.fieldflow-mobile-webview .rp-client-premium .rp-tabbar,
+  html[data-fieldflow-display-mode="standalone"] .rp-premium-shell.rp-app .rp-tabbar,
+  html[data-fieldflow-display-mode="standalone"] .rp-client-premium .rp-tabbar{
+    width:100%;
+    max-width:720px;
+    margin:0 auto;
+    padding:8px!important;
+    border-radius:18px!important;
+    box-shadow:0 18px 42px rgba(15,23,42,.34)!important;
+  }
+
+  body.fieldflow-mobile-webview .rp-premium-shell.rp-app .rp-shell,
+  body.fieldflow-mobile-webview .rp-client-premium .rp-shell,
+  html[data-fieldflow-display-mode="standalone"] .rp-premium-shell.rp-app .rp-shell,
+  html[data-fieldflow-display-mode="standalone"] .rp-client-premium .rp-shell{
+    padding-bottom:calc(108px + var(--ff-safe-bottom))!important;
+  }
+}
+
+@media (max-width:420px){
+  .ff-responsive-runtime :where(.rpa-month-summary,.rp-analytics-fronts-summary){
+    grid-template-columns:1fr!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-tabbar button){
+    min-width:104px!important;
+    padding-left:9px!important;
+    padding-right:9px!important;
+    font-size:12px!important;
+  }
+
+  .ff-responsive-runtime :where(.rp-card,.rp-panel-card,.rp-premium-card,.routespro-form-section){
+    padding:12px!important;
+  }
+}
+
+@media (orientation:landscape) and (max-height:520px) and (max-width:980px){
+  body.fieldflow-mobile-webview .rp-premium-shell.rp-app .rp-tabbar,
+  body.fieldflow-mobile-webview .rp-client-premium .rp-tabbar{
+    padding:5px!important;
+  }
+
+  body.fieldflow-mobile-webview .rp-premium-shell.rp-app .rp-tabbar button,
+  body.fieldflow-mobile-webview .rp-client-premium .rp-tabbar button{
+    min-height:40px!important;
+    padding-top:7px!important;
+    padding-bottom:7px!important;
+  }
+}
+
+@supports not (height:100dvh){
+  :root{--ff-runtime-vh:100vh}
+}
+
+@supports not (overflow:clip){
+  body.fieldflow-mobile-webview .fieldflow-mobile-viewport{overflow-x:hidden}
+}
+
+@supports not (color:color-mix(in srgb,#000,#fff)){
+  .ff-responsive-runtime :where(.rp-card,.rp-panel-card,.rp-premium-card){
+    border-color:#e2e8f0;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ff-responsive-runtime *,
+  .ff-responsive-runtime *::before,
+  .ff-responsive-runtime *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}

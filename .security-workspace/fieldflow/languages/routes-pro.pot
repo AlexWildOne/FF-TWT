@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FieldFlow 2.2.615\n"
+"POT-Creation-Date: 2026-10-05 14:00+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. FieldFlow 9BY multilingual runtime baseline. Runtime dictionaries live in assets/fieldflow-i18n.js.
+msgid "Idioma"
+msgstr ""
+
+msgid "Idioma principal"
+msgstr ""
+
+msgid "Idiomas disponíveis"
+msgstr ""
+
+msgid "Permitir que o utilizador altere o idioma no front e na app"
+msgstr ""

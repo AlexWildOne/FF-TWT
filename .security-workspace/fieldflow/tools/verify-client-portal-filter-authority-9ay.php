@@ -1,0 +1,20 @@
+<?php
+$root = dirname(__DIR__);
+$read = static function(string $relative) use ($root): string { $p=$root.'/'.$relative; return is_readable($p)?(string)file_get_contents($p):''; };
+$failed=[];
+$assert=static function(bool $ok,string $name) use (&$failed): void { if(!$ok)$failed[]=$name; };
+$front=$read('src/Front/ClientPortalShortcodeRenderer.php');
+$phase=$read('src/Cloud/Phase6StableRelease.php');
+$gate=$read('src/Support/ReleaseGate.php');
+$validator=$read('src/Support/ReleasePackageValidator.php');
+$manager=$read('src/Admin/ReleaseManager.php');
+$doc=$read('PHASE-9AY-CLIENT-PORTAL-FILTER-AUTHORITY-REBASE.md');
+foreach(['selectedFilterRange','routesInSelectedRange','O filtro global De/Até permanece ativo.','if(els.from) els.from.disabled=false;','if(els.to) els.to.disabled=false;',"p.set('from',els.from.value)","p.set('to',els.to.value)","p.set('date_from',els.from.value)","p.set('date_to',els.to.value)",'renderTeamPerformance','rp-consolidated-summary','Custo deslocação total'] as $m)$assert(strpos($front,$m)!==false,'front:'.$m);
+foreach(['els.from.disabled=!!date','els.to.disabled=!!date','if(state.routeDateLocked) return;','if(date) els.from.value=date;','if(date) els.to.value=date;'] as $m)$assert(strpos($front,$m)===false,'front_forbidden:'.$m);
+$assert(strpos($phase,"SOURCE_RELEASE = '2.2.568'")!==false && strpos($phase,"STABLE_RELEASE = '2.2.569'")!==false,'phase6_successor');
+$assert(strpos($gate,"CLIENT_PORTAL_FILTER_AUTHORITY_9AY_CONTRACT = 'fieldflow-client-portal-filter-authority-rebase-v1'")!==false,'gate_contract');
+$assert(strpos($gate,'checkClientPortalFilterAuthority9AYContract')!==false,'gate_check');
+$assert(strpos($validator,'client_portal_filter_authority_9ay_ok')!==false,'validator_check');
+$assert(strpos($manager,"packageResult['client_portal_filter_authority_9ay_ok']")!==false,'manager_kpi');
+$assert(strpos($doc,'fieldflow-client-portal-filter-authority-rebase-v1')!==false,'doc_contract');
+if($failed){fwrite(STDERR,'FAILED '.implode(',',$failed).PHP_EOL);exit(1);}echo "CLIENT PORTAL FILTER AUTHORITY 9AY CONTRACT OK\n";

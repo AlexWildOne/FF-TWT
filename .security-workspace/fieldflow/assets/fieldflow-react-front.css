@@ -1,0 +1,171 @@
+.ff-react-front-form-progress-root{display:block;margin:0 0 14px}
+.ff-react-front-form-progress{position:sticky;top:6px;z-index:9;padding:13px 14px;border:1px solid color-mix(in srgb,var(--rp-form-primary,#2271b1) 20%,#e2e8f0);border-radius:16px;background:color-mix(in srgb,var(--rp-form-surface,#fff) 94%,transparent);backdrop-filter:blur(14px);box-shadow:0 10px 28px rgba(15,23,42,.08)}
+.ff-react-front-form-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.ff-react-front-form-progress-head>div{min-width:0}.ff-react-front-eyebrow{display:block;margin-bottom:3px;color:var(--rp-form-muted,#64748b);font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}.ff-react-front-form-progress-head strong{display:block;overflow:hidden;color:var(--rp-form-heading,#0f172a);font-size:14px;line-height:1.25;text-overflow:ellipsis;white-space:nowrap}.ff-react-front-step-pill{display:inline-flex;align-items:center;justify-content:center;min-width:46px;min-height:30px;padding:4px 9px;border-radius:999px;background:color-mix(in srgb,var(--rp-form-primary,#2271b1) 10%,#fff);color:var(--rp-form-primary,#2271b1);font-size:12px;font-weight:900}.ff-react-front-progress-track{height:8px;margin-top:10px;overflow:hidden;border-radius:999px;background:color-mix(in srgb,var(--rp-form-primary,#2271b1) 10%,#eef2f7)}.ff-react-front-progress-track>span{display:block;height:100%;border-radius:inherit;background:var(--rp-form-primary,#2271b1);transition:width .22s ease}.ff-react-front-progress-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:7px;color:var(--rp-form-muted,#64748b);font-size:11px}.ff-react-front-progress-meta strong{color:var(--rp-form-heading,#0f172a);font-size:11px}[data-fieldflow-react-front-fallback-hidden="1"]{display:none!important}@media(max-width:560px){.ff-react-front-form-progress{margin-inline:-2px;padding:11px 12px;border-radius:14px}.ff-react-front-form-progress-head strong{max-width:230px}}
+
+/* 2.2.491 React simple field controls, preserving the 2.2.490 operational wave */
+.ff-react-front-operational-shell-root{display:block;margin:14px 0 2px}.ff-react-front-operational-shell{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #dbe5f0;border-radius:18px;background:rgba(255,255,255,.92);box-shadow:0 10px 26px rgba(15,23,42,.06);backdrop-filter:blur(12px)}.ff-react-front-operational-status{display:flex;align-items:center;gap:10px;min-width:0}.ff-react-front-operational-status>span{display:inline-flex;align-items:center;min-height:28px;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:900}.ff-react-front-operational-status>span.is-online{background:#dcfce7;color:#166534}.ff-react-front-operational-status>span.is-offline{background:#fef3c7;color:#92400e}.ff-react-front-operational-status strong{overflow:hidden;color:#0f172a;font-size:13px;text-overflow:ellipsis;white-space:nowrap}.ff-react-front-operational-nav{display:flex;gap:6px;overflow:auto;max-width:60%;padding:2px}.ff-react-front-operational-nav button{border:1px solid #dbe5f0;border-radius:999px;background:#fff;color:#475569;padding:7px 10px;font-size:11px;font-weight:850;white-space:nowrap;cursor:pointer}.ff-react-front-operational-nav button.is-active{border-color:var(--rp-primary-solid,#2563eb);background:color-mix(in srgb,var(--rp-primary-solid,#2563eb) 10%,#fff);color:#0f172a}
+.ff-react-front-route-toolbar-root{display:block;margin:12px 0}.ff-react-front-route-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid #dbe5f0;border-radius:18px;background:linear-gradient(180deg,#fff,#f8fafc);box-shadow:0 9px 24px rgba(15,23,42,.05)}.ff-react-front-route-date,.ff-react-front-route-picker{display:flex;align-items:center;gap:8px}.ff-react-front-route-date button{width:38px;height:38px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:#0f172a;font-size:22px;line-height:1;cursor:pointer}.ff-react-front-route-date input,.ff-react-front-route-picker select{min-height:40px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:#0f172a;padding:8px 10px;font-weight:750}.ff-react-front-route-picker span{color:#64748b;font-size:11px;font-weight:850;white-space:nowrap}.ff-react-front-route-picker select{min-width:220px;max-width:420px}
+.ff-react-front-simple-field-root{display:block;margin-top:7px}.ff-react-front-field-assist{display:flex;align-items:center;gap:7px;min-width:0}.ff-react-front-field-assist>span,.ff-react-front-field-assist>strong{display:inline-flex;align-items:center;min-height:23px;padding:3px 7px;border-radius:999px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}.ff-react-front-field-assist>span{background:#f1f5f9;color:#64748b}.ff-react-front-field-assist>strong{background:#eef2ff;color:#3730a3}.ff-react-front-field-assist.is-filled>strong{background:#dcfce7;color:#166534}.ff-react-front-field-assist.is-required>strong{background:#fff7ed;color:#9a3412}.ff-react-front-field-assist.is-disabled>strong{background:#e2e8f0;color:#475569}.ff-react-front-field-assist small{min-width:0;overflow:hidden;color:#64748b;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:760px){.ff-react-front-operational-shell{align-items:stretch;flex-direction:column}.ff-react-front-operational-nav{max-width:100%}.ff-react-front-route-toolbar{align-items:stretch;flex-direction:column}.ff-react-front-route-date,.ff-react-front-route-picker{width:100%}.ff-react-front-route-date input{flex:1;min-width:0}.ff-react-front-route-picker{align-items:stretch;flex-direction:column}.ff-react-front-route-picker select{width:100%;max-width:none;min-width:0}.ff-react-front-operational-fallback{margin:12px 0}}
+/* Phase 8F: canonical-input React controls for simple form fields. */
+[data-fieldflow-react-simple-native="1"]{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+.routespro-form-input-group[data-fieldflow-react-simple-native="1"]>.routespro-form-addon{display:none!important}
+.ff-react-front-simple-control{display:grid;gap:7px;margin-top:6px}.ff-react-front-simple-control-input{display:flex;align-items:stretch;width:100%;overflow:hidden;border:1px solid color-mix(in srgb,var(--rp-form-border,#cbd5e1) 92%,transparent);border-radius:13px;background:var(--rp-form-surface,#fff);box-shadow:0 1px 2px rgba(15,23,42,.03);transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}.ff-react-front-simple-control-input:focus-within{border-color:var(--rp-form-primary,#2271b1);box-shadow:0 0 0 3px color-mix(in srgb,var(--rp-form-primary,#2271b1) 14%,transparent)}.ff-react-front-simple-control input,.ff-react-front-simple-control textarea,.ff-react-front-simple-control select{box-sizing:border-box;width:100%;min-width:0;min-height:44px;margin:0!important;padding:10px 12px!important;border:0!important;border-radius:0!important;outline:0!important;background:transparent!important;color:var(--rp-form-heading,#0f172a)!important;font:inherit!important;box-shadow:none!important}.ff-react-front-simple-control textarea{min-height:96px;resize:vertical}.ff-react-front-simple-control select{appearance:auto}.ff-react-front-simple-addon{display:inline-flex;align-items:center;justify-content:center;min-width:42px;padding:0 10px;background:color-mix(in srgb,var(--rp-form-primary,#2271b1) 7%,#f8fafc);color:var(--rp-form-muted,#64748b);font-size:12px;font-weight:850}.ff-react-front-simple-control.is-disabled .ff-react-front-simple-control-input{background:#f8fafc;opacity:.72}.ff-react-front-simple-control[data-react-contract="fieldflow-react-simple-field-control-v1"] .ff-react-front-field-assist{margin-top:0}[data-fieldflow-react-simple-invalid="1"] .ff-react-front-simple-control-input{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.1)}
+@media(max-width:560px){.ff-react-front-simple-control input,.ff-react-front-simple-control textarea,.ff-react-front-simple-control select{min-height:48px;font-size:16px!important}.ff-react-front-simple-addon{min-width:44px}}
+
+/* Phase 8G: React choice controls and advanced-field status surfaces. */
+.ff-react-front-choice-root{display:block;margin-top:8px}[data-fieldflow-react-choice-native="1"]{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}.ff-react-choice-control{display:grid;gap:10px}.ff-react-choice-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.ff-react-choice-head>strong{color:var(--rp-form-heading,#0f172a);font-size:13px}.ff-react-choice-head>span{display:inline-flex;padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:10px;font-weight:850}.ff-react-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.ff-react-choice-option{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:10px 12px;border:1px solid #dbe5f0;border-radius:14px;background:#fff;color:#0f172a;text-align:left;cursor:pointer;box-shadow:0 4px 14px rgba(15,23,42,.04);transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}.ff-react-choice-option:hover{transform:translateY(-1px);border-color:#cbd5e1}.ff-react-choice-option.is-selected{border-color:var(--rp-form-primary,#2271b1);background:color-mix(in srgb,var(--rp-form-primary,#2271b1) 7%,#fff);box-shadow:0 0 0 3px color-mix(in srgb,var(--rp-form-primary,#2271b1) 10%,transparent)}.ff-react-choice-copy{display:grid;gap:2px;min-width:0;flex:1}.ff-react-choice-copy strong{overflow:hidden;font-size:13px;text-overflow:ellipsis}.ff-react-choice-copy small{color:#64748b;font-size:10px}.ff-react-choice-check{display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border:2px solid #cbd5e1;border-radius:999px;color:#fff;font-size:13px;font-weight:900}.ff-react-choice-option.is-selected .ff-react-choice-check{border-color:var(--rp-form-primary,#2271b1);background:var(--rp-form-primary,#2271b1)}.ff-react-choice-option.is-visual{align-items:stretch;overflow:hidden;padding:0}.ff-react-choice-media{display:block;flex:0 0 96px;min-height:82px;background:#f8fafc}.ff-react-choice-media img{display:block;width:100%;height:100%;object-fit:cover}.ff-react-choice-option.is-visual .ff-react-choice-copy{align-self:center;padding:10px 0}.ff-react-choice-option.is-visual .ff-react-choice-check{align-self:center;margin-right:12px}.ff-react-choice-toggle{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 12px;border:1px solid #dbe5f0;border-radius:14px;background:#fff;color:#0f172a;text-align:left;cursor:pointer}.ff-react-choice-toggle-indicator{position:relative;flex:0 0 44px;width:44px;height:26px;border-radius:999px;background:#cbd5e1;transition:background .15s ease}.ff-react-choice-toggle-indicator:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(15,23,42,.22);transition:transform .15s ease}.ff-react-choice-toggle.is-selected{border-color:var(--rp-form-primary,#2271b1);background:color-mix(in srgb,var(--rp-form-primary,#2271b1) 6%,#fff)}.ff-react-choice-toggle.is-selected .ff-react-choice-toggle-indicator{background:var(--rp-form-primary,#2271b1)}.ff-react-choice-toggle.is-selected .ff-react-choice-toggle-indicator:after{transform:translateX(18px)}.ff-react-choice-toggle>span:last-child{display:grid;gap:2px}.ff-react-choice-toggle strong{font-size:13px}.ff-react-choice-toggle small{color:#64748b;font-size:10px}[data-fieldflow-react-choice-invalid="1"] .ff-react-choice-control,[data-fieldflow-react-choice-invalid="1"] .ff-react-choice-toggle{outline:3px solid rgba(220,38,38,.12);outline-offset:2px}
+.ff-react-front-special-root{display:block;margin:12px 0 4px}.ff-react-special-field{display:grid;gap:9px;padding:11px 12px;border:1px solid color-mix(in srgb,var(--rp-form-primary,#2271b1) 15%,#dbe5f0);border-radius:15px;background:linear-gradient(180deg,#fff,#f8fafc)}.ff-react-special-field-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.ff-react-special-field-head>div{display:grid;gap:2px;min-width:0}.ff-react-special-field-head>div>span{color:var(--rp-form-primary,#2271b1);font-size:9px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}.ff-react-special-field-head strong{overflow:hidden;color:#0f172a;font-size:12px;text-overflow:ellipsis;white-space:nowrap}.ff-react-special-status{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#fff7ed;color:#9a3412;font-size:10px;font-weight:900;white-space:nowrap}.ff-react-special-status.is-complete{background:#dcfce7;color:#166534}.ff-react-special-progress{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}.ff-react-special-progress:before{content:"";grid-column:1;grid-row:1;height:7px;border-radius:999px;background:#e2e8f0}.ff-react-special-progress>span{grid-column:1;grid-row:1;display:block;height:7px;border-radius:999px;background:var(--rp-form-primary,#2271b1);z-index:1;transition:width .2s ease}.ff-react-special-progress>small{grid-column:2;color:#64748b;font-size:9px;font-weight:850}.ff-react-special-actions{display:flex;gap:7px}.ff-react-special-actions button{min-height:32px;padding:5px 9px;border:1px solid #dbe5f0;border-radius:999px;background:#fff;color:#475569;font-size:10px;font-weight:850;cursor:pointer}
+@media(max-width:640px){.ff-react-choice-grid{grid-template-columns:1fr}.ff-react-choice-option{min-height:52px}.ff-react-choice-option.is-visual{min-height:92px}.ff-react-choice-media{flex-basis:108px}.ff-react-special-field-head{align-items:flex-start;flex-direction:column}.ff-react-special-status{white-space:normal}.ff-react-special-actions{overflow:auto}}
+
+/* Phase 8H: media control surface. Native media transport remains canonical. */
+[data-fieldflow-react-media-native="1"]{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+.ff-react-media-control{display:grid;gap:10px;padding-top:2px}.ff-react-media-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.ff-react-media-stats>span{display:grid;gap:2px;padding:8px 9px;border:1px solid #e2e8f0;border-radius:12px;background:#fff}.ff-react-media-stats strong{color:#0f172a;font-size:13px}.ff-react-media-stats small{color:#64748b;font-size:9px;font-weight:750}.ff-react-media-stats .is-online{background:#f0fdf4;border-color:#bbf7d0}.ff-react-media-stats .is-online strong{color:#166534}.ff-react-media-stats .is-offline{background:#fff7ed;border-color:#fed7aa}.ff-react-media-stats .is-offline strong{color:#9a3412}.ff-react-media-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ff-react-media-actions.is-secondary{grid-template-columns:1fr}.ff-react-media-actions button{min-height:46px;border:1px solid #dbe5f0;border-radius:13px;background:#fff;color:#0f172a;font-weight:850;cursor:pointer;box-shadow:0 4px 14px rgba(15,23,42,.05)}.ff-react-media-actions button:first-child{background:#fff7ed}.ff-react-media-actions button:hover,.ff-react-media-actions button:focus-visible{border-color:var(--rp-form-primary,#2271b1);outline:3px solid color-mix(in srgb,var(--rp-form-primary,#2271b1) 12%,transparent);outline-offset:1px}.ff-react-media-owner{color:#64748b;font-size:9px;line-height:1.4}
+@media(max-width:640px){.ff-react-media-stats{grid-template-columns:1fr 1fr}.ff-react-media-actions{grid-template-columns:1fr}.ff-react-media-actions button{min-height:50px;font-size:15px}}
+
+/* Phase 8I, 2.2.494: complete operational navigation surface. */
+.ff-react-front-operational-nav{overscroll-behavior-inline:contain;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.ff-react-front-operational-nav button{flex:0 0 auto;min-height:40px}
+.ff-react-front-operational-nav button[aria-current="page"]{border-color:var(--rp-primary-solid,#2563eb);background:color-mix(in srgb,var(--rp-primary-solid,#2563eb) 10%,#fff);color:#0f172a}
+@media(max-width:760px){.ff-react-front-operational-shell-root{margin-inline:-2px}.ff-react-front-operational-shell{padding:10px}.ff-react-front-operational-nav{width:100%;max-width:100%;padding-bottom:4px}.ff-react-front-operational-nav button{min-height:44px;padding:8px 12px;font-size:12px}}
+
+/* Phase 8J, 2.2.498: React Operational Modules. fieldflow-react-operational-modules-v1 */
+.ff-react-operational-module-root{width:100%;max-width:none;margin:0 0 12px;min-width:0}
+.ff-react-operational-module{width:100%;max-width:none;box-sizing:border-box;border:1px solid #e2e8f0;border-radius:16px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);padding:12px;box-shadow:0 7px 22px rgba(15,23,42,.055);display:grid;gap:10px}
+.ff-react-module-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;min-width:0}
+.ff-react-module-head>div{display:grid;gap:2px;min-width:0}.ff-react-module-head span{font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#64748b}.ff-react-module-head strong{font-size:16px;line-height:1.2;color:#0f172a}.ff-react-module-head small{max-width:58%;font-size:11px;line-height:1.35;color:#64748b;text-align:right}
+.ff-react-module-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;min-width:0}.ff-react-module-field{display:grid;gap:4px;min-width:0}.ff-react-module-field>span{font-size:10px;font-weight:800;color:#475569}.ff-react-module-field input,.ff-react-module-field select{width:100%;min-width:0;min-height:42px;box-sizing:border-box;border:1px solid #cbd5e1;border-radius:11px;background:#fff;color:#0f172a;padding:8px 10px;font:inherit}.ff-react-module-field input:focus,.ff-react-module-field select:focus{outline:3px solid color-mix(in srgb,var(--rp-primary-solid,#2563eb) 14%,transparent);border-color:var(--rp-primary-solid,#2563eb);outline-offset:1px}
+.ff-react-module-chips{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding:1px 1px 4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.ff-react-module-chips button,.ff-react-module-actions button,.ff-react-module-pagination button{min-height:40px;border:1px solid #dbe4ee;border-radius:999px;background:#fff;color:#334155;padding:7px 11px;font-weight:800;cursor:pointer;white-space:nowrap}.ff-react-module-chips button.is-active{border-color:var(--rp-primary-solid,#2563eb);background:color-mix(in srgb,var(--rp-primary-solid,#2563eb) 10%,#fff);color:#0f172a}.ff-react-module-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}.ff-react-module-actions button:not(.is-ghost){border-color:var(--rp-primary-solid,#2563eb);background:var(--rp-primary-solid,#2563eb);color:#fff}.ff-react-module-actions button:focus-visible,.ff-react-module-chips button:focus-visible,.ff-react-module-pagination button:focus-visible{outline:3px solid color-mix(in srgb,var(--rp-primary-solid,#2563eb) 16%,transparent);outline-offset:2px}
+.ff-react-module-pagination{display:flex;align-items:center;justify-content:center;gap:10px}.ff-react-module-pagination>span{font-size:12px;font-weight:800;color:#475569}.ff-react-module-pagination button:disabled{opacity:.45;cursor:not-allowed}
+[data-fieldflow-react-operational-native="1"]{display:none!important}.ff-react-module-search-hidden{display:none!important}
+@media(max-width:760px){.ff-react-operational-module-root{margin-bottom:10px}.ff-react-operational-module{border-radius:14px;padding:10px;gap:9px}.ff-react-module-head{align-items:flex-start;display:grid;grid-template-columns:1fr}.ff-react-module-head small{max-width:none;text-align:left}.ff-react-module-controls{grid-template-columns:1fr}.ff-react-module-field input,.ff-react-module-field select{min-height:48px;font-size:16px}.ff-react-module-chips button,.ff-react-module-actions button,.ff-react-module-pagination button{min-height:46px}.ff-react-module-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.ff-react-module-actions button{width:100%;white-space:normal}.ff-react-module-pagination{justify-content:space-between}.ff-react-module-pagination button{min-width:96px}}
+@media(max-width:420px){.ff-react-module-actions{grid-template-columns:1fr}.ff-react-module-pagination{gap:6px}.ff-react-module-pagination button{min-width:0;flex:1 1 0}}
+
+/* Phase 8K, 2.2.498: Operational Action Hardening & Implementations UX.
+ * Contract: fieldflow-react-operational-actions-hardening-v1
+ * Presentation/proxy hardening only. Canonical module runtimes remain native.
+ */
+.ff-react-operational-module-implementations .ff-react-module-chips{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:2px 2px 8px!important;
+  scroll-snap-type:x proximity;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.ff-react-operational-module-implementations .ff-react-module-chips>button{
+  display:inline-flex!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  min-height:42px!important;
+  padding:8px 13px!important;
+  margin:0!important;
+  white-space:nowrap!important;
+  line-height:1.15!important;
+  scroll-snap-align:start;
+}
+.ff-operational-surface-implementations .ffi-front-filters{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  gap:8px!important;
+  padding:2px 2px 8px!important;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.ff-operational-surface-implementations .ffi-front-filters>button{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  margin:0!important;
+  white-space:nowrap!important;
+}
+@media(max-width:760px){
+  .ff-react-operational-module-implementations .ff-react-module-chips>button,
+  .ff-operational-surface-implementations .ffi-front-filters>button{
+    min-height:46px!important;
+    padding:9px 14px!important;
+    font-size:12px!important;
+  }
+}
+
+/* Phase 8M, 2.2.498: React Form Completion.
+ * Contract: fieldflow-react-form-completion-v1
+ * React owns guidance and navigation only. Canonical inputs, validation,
+ * offline persistence, media transport and submission remain certified owners.
+ */
+.ff-react-special-field[data-form-completion-contract="fieldflow-react-form-completion-v1"]{gap:10px;padding:12px 13px;border-color:color-mix(in srgb,var(--rp-form-primary,#2271b1) 18%,#dbe5f0);box-shadow:0 8px 24px rgba(15,23,42,.045)}
+.ff-react-special-field.is-inactive{background:#f8fafc;border-style:dashed;box-shadow:none;opacity:.86}
+.ff-react-special-status.is-inactive{background:#f1f5f9;color:#64748b}
+.ff-react-special-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:7px}
+.ff-react-special-summary>span{display:grid;gap:2px;min-width:0;padding:9px 10px;border:1px solid #e2e8f0;border-radius:12px;background:#fff}
+.ff-react-special-summary strong{font-size:14px;line-height:1.1;color:#0f172a}
+.ff-react-special-summary small{font-size:9px;line-height:1.25;font-weight:800;color:#64748b}
+.ff-react-special-category-nav{display:flex;align-items:stretch;gap:7px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:1px 1px 5px;overscroll-behavior-inline:contain;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.ff-react-special-category-nav button{display:grid;grid-template-columns:auto auto;align-items:center;gap:7px;flex:0 0 auto;width:auto;min-width:max-content;min-height:38px;margin:0;padding:7px 10px;border:1px solid #dbe5f0;border-radius:999px;background:#fff;color:#334155;font-size:10px;font-weight:850;line-height:1.15;white-space:nowrap;cursor:pointer}
+.ff-react-special-category-nav button small{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:2px 6px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:9px;font-weight:900}
+.ff-react-special-category-nav button.is-complete{border-color:#bbf7d0;background:#f0fdf4;color:#166534}
+.ff-react-special-category-nav button.is-complete small{background:#dcfce7;color:#166534}
+.ff-react-special-category-nav button:focus-visible,.ff-react-special-actions button:focus-visible{outline:3px solid color-mix(in srgb,var(--rp-form-primary,#2271b1) 14%,transparent);outline-offset:2px}
+.ff-react-special-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.ff-react-special-actions button{flex:0 0 auto;min-height:38px;padding:7px 11px}
+.ff-react-special-actions button.is-primary{border-color:var(--rp-form-primary,#2271b1);background:var(--rp-form-primary,#2271b1);color:#fff}
+[data-fieldflow-react-form-completion="1"] .routespro-category-toolbar{margin-bottom:8px}
+@media(max-width:640px){
+  .ff-react-special-field[data-form-completion-contract="fieldflow-react-form-completion-v1"]{margin-inline:-1px;padding:11px;border-radius:14px}
+  .ff-react-special-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ff-react-special-category-nav button{min-height:44px;padding:8px 12px;font-size:11px}
+  .ff-react-special-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .ff-react-special-actions button{width:100%;min-height:46px;white-space:normal}
+}
+@media(max-width:420px){.ff-react-special-summary,.ff-react-special-actions{grid-template-columns:1fr}}
+
+
+/* Phase 9C, React Client Wave 1 */
+.ff-react-operational-module[data-client-wave1="fieldflow-react-client-wave1-v1"]{
+  width:100%;
+  max-width:none;
+  min-width:0;
+}
+.ff-react-operational-module[data-client-wave1="fieldflow-react-client-wave1-v1"][data-client-wave1-status="loading"],
+.ff-react-operational-module[data-client-wave1="fieldflow-react-client-wave1-v1"][data-client-wave1-status="refreshing"]{
+  opacity:.985;
+}
+.ff-react-operational-module[data-client-wave1="fieldflow-react-client-wave1-v1"][data-client-wave1-status="loading"] .ff-react-module-head small,
+.ff-react-operational-module[data-client-wave1="fieldflow-react-client-wave1-v1"][data-client-wave1-status="refreshing"] .ff-react-module-head small{
+  min-width:5.5rem;
+}
+
+/* Phase 9C, React Client Wave 2 + Cross-Portal Render Isolation */
+.ff-react-operational-module[data-client-wave2="fieldflow-react-client-wave2-v1"]{
+  width:100%;
+  max-width:none;
+  min-width:0;
+}
+.ff-react-operational-module[data-client-wave2="fieldflow-react-client-wave2-v1"][data-client-wave2-status="loading"],
+.ff-react-operational-module[data-client-wave2="fieldflow-react-client-wave2-v1"][data-client-wave2-status="refreshing"]{
+  opacity:.985;
+}
+.ff-react-operational-module[data-client-wave2="fieldflow-react-client-wave2-v1"][data-client-wave2-status="loading"] .ff-react-module-head small,
+.ff-react-operational-module[data-client-wave2="fieldflow-react-client-wave2-v1"][data-client-wave2-status="refreshing"] .ff-react-module-head small{
+  min-width:5.5rem;
+}
+.ff-react-operational-module[data-cross-portal-isolation="fieldflow-cross-portal-render-isolation-v1"]{
+  isolation:isolate;
+}

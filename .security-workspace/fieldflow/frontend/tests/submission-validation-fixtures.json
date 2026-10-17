@@ -1,0 +1,226 @@
+[
+  {
+    "name": "hidden required branch is ignored",
+    "questions": [
+      {
+        "key": "need",
+        "type": "radio",
+        "required": true
+      },
+      {
+        "key": "details",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "need": true,
+      "details": false
+    },
+    "values": {
+      "need": "Não",
+      "details": ""
+    },
+    "expected": {
+      "valid": true,
+      "missing": [],
+      "active": [
+        "need"
+      ],
+      "hidden": [
+        "details"
+      ]
+    }
+  },
+  {
+    "name": "visible required text is missing",
+    "questions": [
+      {
+        "key": "name",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "name": true
+    },
+    "values": {
+      "name": ""
+    },
+    "expected": {
+      "valid": false,
+      "missing": [
+        "name"
+      ],
+      "active": [
+        "name"
+      ],
+      "hidden": []
+    }
+  },
+  {
+    "name": "visible required text is valid",
+    "questions": [
+      {
+        "key": "name",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "name": true
+    },
+    "values": {
+      "name": "Loja"
+    },
+    "expected": {
+      "valid": true,
+      "missing": [],
+      "active": [
+        "name"
+      ],
+      "hidden": []
+    }
+  },
+  {
+    "name": "required checkbox false is missing",
+    "questions": [
+      {
+        "key": "confirm",
+        "type": "checkbox",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "confirm": true
+    },
+    "values": {
+      "confirm": false
+    },
+    "expected": {
+      "valid": false,
+      "missing": [
+        "confirm"
+      ],
+      "active": [
+        "confirm"
+      ],
+      "hidden": []
+    }
+  },
+  {
+    "name": "required checkbox true is valid",
+    "questions": [
+      {
+        "key": "confirm",
+        "type": "checkbox",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "confirm": true
+    },
+    "values": {
+      "confirm": true
+    },
+    "expected": {
+      "valid": true,
+      "missing": [],
+      "active": [
+        "confirm"
+      ],
+      "hidden": []
+    }
+  },
+  {
+    "name": "optional checkbox false is retained when provided",
+    "questions": [
+      {
+        "key": "flag",
+        "type": "checkbox",
+        "required": false
+      }
+    ],
+    "visibility": {
+      "flag": true
+    },
+    "values": {
+      "flag": false
+    },
+    "expected": {
+      "valid": true,
+      "missing": [],
+      "active": [
+        "flag"
+      ],
+      "hidden": [],
+      "active_values": {
+        "flag": 0
+      }
+    }
+  },
+  {
+    "name": "empty required array is missing",
+    "questions": [
+      {
+        "key": "brands",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "brands": true
+    },
+    "values": {
+      "brands": []
+    },
+    "expected": {
+      "valid": false,
+      "missing": [
+        "brands"
+      ],
+      "active": [
+        "brands"
+      ],
+      "hidden": []
+    }
+  },
+  {
+    "name": "hidden order suggestion never enters active payload",
+    "questions": [
+      {
+        "key": "need_order",
+        "type": "radio",
+        "required": true
+      },
+      {
+        "key": "order_suggestion",
+        "type": "order_suggestion",
+        "required": true
+      }
+    ],
+    "visibility": {
+      "need_order": true,
+      "order_suggestion": false
+    },
+    "values": {
+      "need_order": "Não",
+      "order_suggestion": {
+        "sku": "x"
+      }
+    },
+    "expected": {
+      "valid": true,
+      "missing": [],
+      "active": [
+        "need_order"
+      ],
+      "hidden": [
+        "order_suggestion"
+      ],
+      "active_values": {
+        "need_order": "Não"
+      }
+    }
+  }
+]

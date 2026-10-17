@@ -1,0 +1,43 @@
+<?php
+$root = dirname(__DIR__);
+$read = static function (string $relative) use ($root): string {
+    $path = $root . '/' . ltrim($relative, '/');
+    return is_readable($path) ? (string)file_get_contents($path) : '';
+};
+$fail = static function (string $reason): void { fwrite(STDERR, "FAIL: {$reason}\n"); exit(1); };
+$assert = static function (bool $ok, string $reason) use ($fail): void { if (!$ok) $fail($reason); };
+$plugin = $read('fieldflow.php');
+$release = preg_match("/define\\('FIELDFLOW_VERSION',\\s*'([^']+)'\\)/", $plugin, $m) ? (string)$m[1] : '';
+$assert($release !== '' && version_compare($release, '2.2.546', '>='), 'release must be >= 2.2.546');
+$form = $read('src/Forms/FormRenderer.php');
+$shortcodes = $read('src/Shortcodes.php');
+$shopping = $read('src/Shopping/ShoppingService.php');
+$export = $read('src/Shopping/ShoppingExportService.php');
+$gate = $read('src/Support/ReleaseGate.php');
+$validator = $read('src/Support/ReleasePackageValidator.php');
+$manager = $read('src/Admin/ReleaseManager.php');
+$phase = $read('PHASE-9AD-FORM-VIEWPORT-SHOPPING-DELIVERY-INTEGRITY.md');
+$schema = $read('src/Support/Migrations.php');
+$submission = $read('src/Forms/SubmissionPipeline.php');
+$bridge = $read('src/Mobile/WebViewBridge.php');
+
+$assert(strpos($form, "RP_FORM_VIEWPORT_SHOPPING_CONTRACT='fieldflow-form-viewport-shopping-delivery-integrity-v1'") !== false, 'form viewport contract');
+$assert(strpos($form, 'rpCaptureFormViewport') !== false && strpos($form, 'rpRestoreFormViewport') !== false && strpos($form, 'rpCaptureAllFormViewports') !== false, 'durable form viewport helpers');
+$assert(strpos($form, 'rpRestoreElementViewport') !== false && strpos($form, "'cardex-remove'") !== false && strpos($form, "'media-selected'") !== false, 'dynamic layout viewport restore');
+$assert(strpos($shortcodes, "reportViewportContract='fieldflow-form-viewport-shopping-delivery-integrity-v1'") !== false, 'report viewport contract');
+$assert(strpos($shortcodes, 'reserveReportSlotHeight') !== false && strpos($shortcodes, 'restoreReportViewport') !== false && strpos($shortcodes, "manual-store-dropdown") !== false, 'store selection viewport continuity');
+$assert(strpos($shopping, "'attachment_contract'=>'fieldflow-shopping-canonical-attachment-v1'") !== false, 'shopping attachment contract');
+$assert(strpos($shopping, "'source'=>'canonical_submission_snapshot'") !== false && strpos($shopping, "'reason'=>'attachment_generation_failed'") !== false, 'canonical snapshot and fail closed');
+$assert(strpos($shopping, '$requestedFormats = []') !== false && strpos($shopping, '$missingAttachmentFormats') !== false, 'requested attachments authoritative');
+$assert(strpos($export, 'array $snapshot = []') !== false && strpos($export, 'normaliseSubmissionDetail') !== false, 'snapshot export API');
+$assert(strpos($export, "['Campo','Valor']") !== false && strpos($export, "'Diferença €'") !== false && strpos($export, "'Variação %'") !== false, 'clear xlsx structure');
+$assert(strpos($export, 'RESUMO DA SUBMISSÃO') !== false && strpos($export, 'PREÇOS VERIFICADOS') !== false && strpos($export, 'OBSERVAÇÕES') !== false, 'clear pdf structure');
+$assert(strpos($gate, "FORM_VIEWPORT_SHOPPING_9AD_CONTRACT = 'fieldflow-form-viewport-shopping-delivery-integrity-v1'") !== false, '9AD gate contract');
+$assert(strpos($validator, 'form_viewport_shopping_delivery_9ad_ok') !== false, '9AD package validator');
+$assert(strpos($manager, 'Form Viewport &amp; Shopping Delivery Integrity 9AD') !== false, '9AD release manager');
+$assert(strpos($phase, '`SOURCE_RELEASE` is `2.2.545` and `STABLE_RELEASE` is `2.2.546`') !== false, 'phase succession');
+$assert(strpos($bridge, "queueNativeResume('focus');") === false, 'bare native focus prohibited');
+$assert(strpos($form, "rpQueueResumeDraftForms('focus')") === false, 'bare form focus prohibited');
+$assert(strpos($schema, "LATEST_SCHEMA_VERSION = '2.2.529'") !== false, 'schema identity');
+$assert(strpos($submission, "public const BUILD = '2.2.485'") !== false, 'submission build identity');
+echo 'FORM VIEWPORT SHOPPING DELIVERY 9AD CONTRACT OK | release=' . $release . ' | successor=>=2.2.546 | viewport=anchored | shopping=canonical_fail_closed | schema=2.2.529 | submission_build=2.2.485' . PHP_EOL;

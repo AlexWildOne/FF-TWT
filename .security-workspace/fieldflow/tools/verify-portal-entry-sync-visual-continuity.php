@@ -1,0 +1,21 @@
+<?php
+$root = dirname(__DIR__);
+$read = static function(string $relative) use ($root): string { $path=$root.'/'.ltrim($relative,'/'); return is_readable($path)?(string)file_get_contents($path):''; };
+$assert = static function(bool $ok,string $name): void { if(!$ok){fwrite(STDERR,"FAIL: {$name}\n");exit(1);} };
+$contains = static fn(string $haystack,array $needles): bool => array_reduce($needles,static fn(bool $ok,string $needle): bool=>$ok&&strpos($haystack,$needle)!==false,true);
+$plugin=$read('fieldflow.php');$readme=$read('readme.txt');$phase6=$read('src/Cloud/Phase6StableRelease.php');$gate=$read('src/Support/ReleaseGate.php');$runtime=$read('assets/fieldflow-offline-runtime-2.2.530.js');$canonical=$read('assets/fieldflow-offline-runtime.js');$responsive=$read('src/Front/ResponsiveAssets.php');$app=$read('src/Front/AppShortcodeRenderer.php');$submission=$read('src/Forms/SubmissionPipeline.php');$validator=$read('src/Support/ReleasePackageValidator.php');$manager=$read('src/Admin/ReleaseManager.php');$doc=$read('PHASE-9G-PORTAL-ENTRY-SYNC-VISUAL-CONTINUITY.md');
+$assert($contains($plugin,['Version: 2.2.530',"FIELDFLOW_VERSION', '2.2.530'"]) && strpos($readme,'Stable tag: 2.2.530')!==false,'release_identity');
+$assert($contains($phase6,["VERSION = '1.0.87'","SOURCE_RELEASE = '2.2.529'","STABLE_RELEASE = '2.2.530'"]),'phase6_continuity');
+$assert($contains($gate,["VERSION = '1.79.0'",'legacyInitialActivation','successorInitialActivation','checkPortalEntrySyncVisualContract','fieldflow-portal-entry-sync-visual-v1']),'release_gate_contract');
+$assert($contains($app,['applyInitial();','fieldflow-shared-portal-paint-stability-v1']),'synchronous_successor');
+$assert($contains($runtime,["const RUNTIME_BUILD='2.2.530'","lastSyncResult='syncing';setBanner('syncing',0)","el.hidden=(state==='online'&&!count)||(state==='syncing'&&!count)"]),'versioned_runtime');
+$assert($contains($canonical,["const RUNTIME_BUILD='2.2.530'","el.hidden=(state==='online'&&!count)||(state==='syncing'&&!count)"]),'canonical_runtime');
+$assert(strpos($responsive,'fieldflow-offline-runtime-2.2.530.js')!==false,'runtime_enqueue');
+$assert(strpos($submission,"public const BUILD = '2.2.485'")!==false,'submission_frozen');
+$assert($contains($validator,["'portal_entry_sync_visual_continuity_ok'=>false",'PHASE-9G-PORTAL-ENTRY-SYNC-VISUAL-CONTINUITY.md']),'package_validator');
+$assert(strpos($manager,'Portal Entry Sync Visual')!==false,'release_manager');
+$assert($contains($doc,['fieldflow-portal-entry-sync-visual-v1','`SOURCE_RELEASE` is `2.2.522` and `STABLE_RELEASE` is `2.2.523`','No IndexedDB schema change.','No P1-P4 routing or optimisation-rule change.']),'phase_documentation');
+echo "PORTAL ENTRY SYNC VISUAL CONTINUITY CONTRACT OK\n";
+echo "sync_zero_count=hidden\n";
+echo "front_transition_successor=accepted\n";
+echo "submission_build=2.2.485\n";

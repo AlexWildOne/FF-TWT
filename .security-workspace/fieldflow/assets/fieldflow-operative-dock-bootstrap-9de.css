@@ -1,0 +1,38 @@
+/* FieldFlow 2.2.640 | fieldflow-operative-dock-bootstrap-recovery-9de-v1 | fieldflow-operative-dock-calm-motion-9df-v1 */
+@media (max-width:760px) {
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-tabs {
+    position:fixed!important;
+    left:max(7px,env(safe-area-inset-left,0px))!important;
+    right:max(7px,env(safe-area-inset-right,0px))!important;
+    bottom:calc(5px + env(safe-area-inset-bottom,0px))!important;
+    width:auto!important;max-width:none!important;
+    z-index:1100!important;
+    margin:0!important;padding:0!important;
+    transform:translate3d(0,0,0)!important;
+    opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+    transition:transform .36s cubic-bezier(.22,.85,.25,1),opacity .36s ease,visibility 0s!important;
+  }
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de.ffv-operative-dock-collapsed-9de .rp-tabs,
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-tabs.ffv-dock-hidden {
+    transform:translate3d(0,14px,0)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+    transition:transform .36s cubic-bezier(.22,.85,.25,1),opacity .36s ease,visibility 0s linear .36s!important;
+  }
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-tabbar {
+    display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;
+    max-width:100%!important;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-shell {
+    padding-bottom:calc(var(--ffv-dock-height,66px) + 44px + env(safe-area-inset-bottom,0px))!important;
+  }
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-panels {
+    scroll-padding-bottom:calc(var(--ffv-dock-height,66px) + 26px)!important;
+  }
+  body.ff-keyboard-open #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-tabs {
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  #routespro-app[data-fieldflow-portal="operative"].ffv-operative-dock-9de .rp-tabs { transition:none!important; }
+}

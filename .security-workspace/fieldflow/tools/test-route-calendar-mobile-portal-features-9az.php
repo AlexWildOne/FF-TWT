@@ -1,0 +1,24 @@
+<?php
+$root = dirname(__DIR__);
+$read = static function(string $relative) use ($root): string { $p=$root.'/'.$relative; return is_readable($p)?(string)file_get_contents($p):''; };
+$front=$read('src/Front/ClientPortalShortcodeRenderer.php');
+$settings=$read('src/Mobile/Settings.php');
+$controller=$read('src/Mobile/Controller.php');
+$bridge=$read('src/Mobile/WebViewBridge.php');
+$failed=[];
+$assert=static function(bool $ok,string $name) use (&$failed): void { if(!$ok)$failed[]=$name; };
+$start=strpos($front,'function renderRouteCalendar()');
+$end=$start===false?false:strpos($front,'async function openRouteFromAgenda',$start);
+$calendar=($start!==false&&$end!==false)?substr($front,$start,$end-$start):'';
+$assert($calendar!=='','calendar_block');
+$assert(strpos($calendar,'const totals=routeAggregate(items);')!==false,'daily_route_aggregate');
+$assert(strpos($calendar,'aggregateMoney(totals.mobility,totals.unresolved)')!==false,'daily_total_mobility');
+$assert(strpos($calendar,'const toll=items.reduce')===false && strpos($calendar,'const tollLabel=')===false,'no_toll_only_card');
+$assert(strpos($calendar,"financialDetail='Total '")!==false,'daily_financial_detail');
+$assert(strpos($settings,"'operational' => [")!==false && strpos($settings,"'client' => [")!==false,'two_portal_matrices');
+$assert(strpos($settings,"if (!isset(\$saved['feature_visibility'])")!==false,'legacy_migration');
+$assert(strpos($settings,"\$out['features'][\$key] = (!empty(\$out['feature_visibility']['operational'][\$key]) || !empty(\$out['feature_visibility']['client'][\$key])) ? 1 : 0;")!==false,'legacy_union');
+$assert(strpos($controller,"'operational' => Settings::features_for_target('operational')")!==false && strpos($controller,"'client' => Settings::features_for_target('client')")!==false,'context_portal_features');
+$assert(strpos($controller,"\$portal_feature('routes','operational')")!==false && strpos($controller,"\$portal_feature('routes','client')")!==false,'navigation_target_split');
+$assert(strpos($bridge,"in_array(\$target, ['operational','client'], true)")!==false && strpos($bridge,'Settings::feature_for_target($feature, $target)')!==false,'webview_target_split');
+if($failed){fwrite(STDERR,'FAILED '.implode(',',$failed).PHP_EOL);exit(1);}echo "ROUTE CALENDAR MOBILE PORTAL FEATURES 9AZ RUNTIME OK\n";

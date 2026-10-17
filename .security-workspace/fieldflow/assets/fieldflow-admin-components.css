@@ -1,0 +1,149 @@
+/* FieldFlow 2.2.262, extracted backoffice module components. */
+
+body.ff-fieldflow-admin .ff-int-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+body.ff-fieldflow-admin .ff-int-card{background:#fff;border:1px solid #dcdcde;border-radius:16px;padding:20px;margin-top:18px}
+body.ff-fieldflow-admin .ff-int-card h2{margin-top:0}
+body.ff-fieldflow-admin .ff-code{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:10px;word-break:break-all;font-family:monospace}
+body.ff-fieldflow-admin .ff-secret{border-left:4px solid #16a34a;background:#f0fdf4;padding:14px;margin:16px 0}
+body.ff-fieldflow-admin .ff-scroller{overflow:auto;max-height:520px}
+
+body.ff-fieldflow-admin .ff-dev-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+body.ff-fieldflow-admin :where(.ff-dev-kpi,.ff-dev-card){background:#fff;border:1px solid #dcdcde;border-radius:14px;padding:16px}
+body.ff-fieldflow-admin .ff-dev-kpi span{display:block;color:#64748b;font-size:12px;text-transform:uppercase}
+body.ff-fieldflow-admin .ff-dev-kpi strong{font-size:28px}
+body.ff-fieldflow-admin .ff-dev-table{overflow:auto;background:#fff;border:1px solid #dcdcde;border-radius:14px}
+body.ff-fieldflow-admin .ff-dev-actions{display:flex;gap:5px;flex-wrap:wrap}
+body.ff-fieldflow-admin .ff-pill{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700;background:#e2e8f0}
+body.ff-fieldflow-admin .ff-pill.good{background:#dcfce7;color:#166534}
+body.ff-fieldflow-admin .ff-pill.warn{background:#fef3c7;color:#92400e}
+body.ff-fieldflow-admin .ff-pill.bad{background:#fee2e2;color:#991b1b}
+
+body.ff-fieldflow-admin .ff-ops-nav{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}
+body.ff-fieldflow-admin .ff-ops-nav a{padding:9px 14px;border:1px solid #cbd5e1;border-radius:999px;text-decoration:none;background:#fff}
+body.ff-fieldflow-admin .ff-ops-nav a.active{background:#172033;color:#fff;border-color:#172033}
+body.ff-fieldflow-admin .ff-ops-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+body.ff-fieldflow-admin .ff-ops-card{background:#fff;border:1px solid #dcdcde;border-radius:14px;padding:16px;margin:0 0 16px}
+body.ff-fieldflow-admin .ff-ops-kpi span{display:block;color:#64748b;text-transform:uppercase;font-size:11px}
+body.ff-fieldflow-admin .ff-ops-kpi strong{display:block;font-size:28px;margin-top:4px}
+body.ff-fieldflow-admin .ff-ops-table{overflow:auto}
+body.ff-fieldflow-admin .ff-sev{padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#e2e8f0}
+body.ff-fieldflow-admin .ff-sev.critical{background:#fee2e2;color:#991b1b}
+body.ff-fieldflow-admin :where(.ff-sev.warning,.ff-sev.high){background:#fef3c7;color:#92400e}
+body.ff-fieldflow-admin :where(.ff-sev.info,.ff-sev.low){background:#dbeafe;color:#1d4ed8}
+
+body.ff-fieldflow-admin .ff-b-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}
+body.ff-fieldflow-admin .ff-b-card{background:#fff;border:1px solid #dcdcde;border-radius:16px;padding:18px}
+body.ff-fieldflow-admin :where(.ff-b-card h2,.ff-b-card h3){margin-top:0}
+body.ff-fieldflow-admin .ff-b-value{font-size:30px;font-weight:800}
+body.ff-fieldflow-admin .ff-b-table{overflow:auto;margin-top:18px}
+body.ff-fieldflow-admin .ff-b-status{display:inline-block;padding:4px 9px;border-radius:99px;background:#eef2ff}
+body.ff-fieldflow-admin .ff-b-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+body.ff-fieldflow-admin .ff-b-actions form{margin:0}
+body.ff-fieldflow-admin .ff-b-editor{margin:18px 0;border-left:4px solid #2271b1}
+body.ff-fieldflow-admin .ff-b-editor .form-table th{width:180px}
+
+body.ff-fieldflow-admin .ffp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+body.ff-fieldflow-admin .ffp-card{box-sizing:border-box;background:#fff;border:1px solid #dbe3ef;border-radius:18px;padding:18px;box-shadow:0 10px 26px rgba(15,23,42,.06)}
+body.ff-fieldflow-admin .ffp-card h2{margin-top:0;font-size:20px;line-height:1.25}
+body.ff-fieldflow-admin .ffp-card h3{margin:22px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:#334155}
+body.ff-fieldflow-admin .ffp-card p{margin-top:8px;margin-bottom:12px}
+body.ff-fieldflow-admin .ffp-card label{font-weight:600;color:#1e293b}
+body.ff-fieldflow-admin :where(.ffp-card input.regular-text,.ffp-card select,.ffp-card textarea){margin-top:6px;border-color:#cbd5e1;border-radius:8px}
+body.ff-fieldflow-admin :where(.ffp-card input.regular-text,.ffp-card select,.ffp-card textarea):focus{border-color:#0f172a;box-shadow:0 0 0 1px #0f172a}
+body.ff-fieldflow-admin .ffp-kpi strong{display:block;font-size:34px;letter-spacing:-.04em}
+body.ff-fieldflow-admin .ffp-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+body.ff-fieldflow-admin .ffp-tabs a{padding:9px 13px;border-radius:999px;background:#fff;border:1px solid #dbe3ef;text-decoration:none}
+body.ff-fieldflow-admin .ffp-tabs a.active{background:#0f172a;color:#fff;border-color:#0f172a}
+body.ff-fieldflow-admin .ffp-form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;align-items:end}
+body.ff-fieldflow-admin .ffp-table{margin-top:16px}
+body.ff-fieldflow-admin .ffp-table table.widefat{border-radius:12px;overflow:hidden;border-color:#dbe3ef}
+body.ff-fieldflow-admin .ffp-table table.widefat th{background:#f8fafc;color:#334155;font-weight:700}
+body.ff-fieldflow-admin .ffp-table table.widefat td{vertical-align:middle}
+body.ff-fieldflow-admin .ffp-pill{display:inline-block;border-radius:999px;padding:3px 8px;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:700}
+body.ff-fieldflow-admin .ffp-muted{color:#64748b}
+body.ff-fieldflow-admin .ffp-small{font-size:12px;color:#64748b}
+body.ff-fieldflow-admin .ffp-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+body.ff-fieldflow-admin .ffp-actions a{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid #e2e8f0;text-decoration:none;font-size:12px}
+body.ff-fieldflow-admin .ffp-actions a:hover{background:#eef2ff;border-color:#c7d2fe}
+body.ff-fieldflow-admin .ffp-actions a.ffp-danger{background:#fff7f7;border-color:#fecaca}
+body.ff-fieldflow-admin .ffp-danger{color:#b91c1c}
+body.ff-fieldflow-admin .ffp-editing{border-color:#f59e0b;outline:2px solid rgba(245,158,11,.25);box-shadow:0 0 0 2px rgba(245,158,11,.12),0 10px 26px rgba(15,23,42,.06)}
+body.ff-fieldflow-admin .ffp-lesson-box{position:relative;background:#fff;border:1px solid #d8e0ec;border-radius:14px;padding:14px 14px 10px;margin:12px 0}
+body.ff-fieldflow-admin .ffp-lesson-box:before{content:'Learning Experience';display:block;margin:-2px 0 10px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#64748b}
+body.ff-fieldflow-admin .ffp-lesson-box .ffp-form-grid{grid-template-columns:80px minmax(260px,1.4fr) 150px minmax(260px,1.3fr) 100px 150px 170px;gap:10px}
+body.ff-fieldflow-admin .ffp-lesson-box p{margin:0 0 10px}
+body.ff-fieldflow-admin .ffp-lesson-box textarea{min-height:54px}
+body.ff-fieldflow-admin .ffp-preview{background:#f8fafc;border:1px solid #dbe3ef;border-radius:18px;padding:18px;margin:12px 0}
+body.ff-fieldflow-admin .ffp-preview-hero{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:18px;padding:22px}
+body.ff-fieldflow-admin .ffp-preview-hero h2{color:#fff;margin:0 0 6px}
+body.ff-fieldflow-admin .ffp-preview-list{margin:14px 0 0}
+body.ff-fieldflow-admin .ffp-preview-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:12px;margin:8px 0;display:flex;justify-content:space-between;gap:12px}
+body.ff-fieldflow-admin .ffp-dup-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:12px;margin-top:12px}
+
+body.ff-fieldflow-admin :where(.ff-status-active,.ff-status-paused){display:inline-block;margin-top:6px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700}
+body.ff-fieldflow-admin .ff-status-active{background:#dcfce7;color:#166534}
+body.ff-fieldflow-admin .ff-status-paused{background:#f1f5f9;color:#475569}
+body.ff-fieldflow-admin .ff-report-test-box{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 4px;padding:14px 16px;border:1px solid #bfdbfe;border-radius:14px;background:#eff6ff;color:#1e3a8a}
+body.ff-fieldflow-admin .ff-report-test-box span{color:#475569}
+
+@media(max-width:1280px){
+  body.ff-fieldflow-admin .ffp-lesson-box .ffp-form-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+}
+@media(max-width:1100px){
+  body.ff-fieldflow-admin .ff-b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.ff-fieldflow-admin #fieldflow-report-automations .rp-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:1000px){
+  body.ff-fieldflow-admin .ff-int-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  body.ff-fieldflow-admin :where(.ff-dev-grid,.ff-ops-grid){grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:782px){
+  body.ff-fieldflow-admin #fieldflow-report-automations .rp-field-grid{grid-template-columns:1fr}
+  body.ff-fieldflow-admin #fieldflow-report-automations .rp-field-grid>div{grid-column:1/-1}
+  body.ff-fieldflow-admin .ffp-tabs a{width:100%;text-align:center}
+  body.ff-fieldflow-admin .ffp-card{padding:14px}
+  body.ff-fieldflow-admin .ffp-lesson-box .ffp-form-grid{grid-template-columns:1fr}
+  body.ff-fieldflow-admin :where(.ffp-card input.regular-text,.ffp-card select,.ffp-card textarea){width:100%}
+}
+@media(max-width:680px){
+  body.ff-fieldflow-admin .ff-b-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  body.ff-fieldflow-admin :where(.ff-dev-grid,.ff-ops-grid){grid-template-columns:1fr}
+}
+
+body.ff-fieldflow-admin .ff-dev-grid-6{grid-template-columns:repeat(6,minmax(0,1fr))}body.ff-fieldflow-admin .ff-dev-intro{display:flex;gap:10px 20px;align-items:center;justify-content:space-between;margin:16px 0;padding:14px 16px;border:1px solid #bfdbfe;border-radius:14px;background:#eff6ff;color:#1e3a8a}body.ff-fieldflow-admin .ff-dev-intro span{font-size:12px}body.ff-fieldflow-admin .ff-dev-kpi small{display:block;margin-top:5px;color:#64748b}body.ff-fieldflow-admin .ff-dev-table td{vertical-align:top;min-width:150px}body.ff-fieldflow-admin .ff-dev-table hr{border:0;border-top:1px solid #e2e8f0;margin:9px 0}body.ff-fieldflow-admin .ff-dev-history{margin-top:9px}body.ff-fieldflow-admin .ff-dev-history summary{cursor:pointer;font-size:12px;font-weight:800}body.ff-fieldflow-admin .ff-dev-history div{display:grid;gap:1px;margin-top:6px;padding:7px 8px;border-radius:9px;background:#f8fafc}body.ff-fieldflow-admin .ff-dev-history div strong,body.ff-fieldflow-admin .ff-dev-history div span{font-size:11px}body.ff-fieldflow-admin .ff-dev-history div small{color:#64748b}@media(max-width:1280px){body.ff-fieldflow-admin .ff-dev-grid-6{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:782px){body.ff-fieldflow-admin .ff-dev-grid-6{grid-template-columns:repeat(2,minmax(0,1fr))}body.ff-fieldflow-admin .ff-dev-intro{align-items:flex-start;flex-direction:column}}@media(max-width:520px){body.ff-fieldflow-admin .ff-dev-grid-6{grid-template-columns:1fr}}
+
+/* 9DJ: performance-only mobile layout. Scoped to Security & Observability / Performance.
+   Never touches front portals, dock or form runtime. */
+body.ff-fieldflow-admin .ff-ops-nav.ff-ops-nav-9dj { display:flex; flex-wrap:nowrap !important; overflow-x:auto; overflow-y:hidden; max-width:100%; gap:8px; padding:0 0 10px; scroll-snap-type:x proximity; overscroll-behavior-inline:contain; scrollbar-width:thin; }
+body.ff-fieldflow-admin .ff-ops-nav.ff-ops-nav-9dj > a { flex:0 0 auto; white-space:nowrap; scroll-snap-align:start; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj, body.ff-fieldflow-admin .ff-ops-performance-9dj > * { min-width:0; box-sizing:border-box; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-grid.ff-ops-kpi-grid-9dj { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)) !important; gap:12px; align-items:stretch; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-grid.ff-ops-process-grid-9dj { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,375px),1fr)) !important; gap:14px; align-items:stretch; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-kpi-grid-9dj .ff-ops-kpi { min-width:0; padding:14px 16px; border:1px solid #e2e8f0; border-radius:14px; background:#f8fafc; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-kpi-grid-9dj .ff-ops-kpi strong { display:block; font-size:clamp(20px,2.5vw,29px); line-height:1.25; overflow-wrap:anywhere; word-break:normal; margin:6px 0; font-variant-numeric:tabular-nums; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-kpi-grid-9dj .ff-ops-kpi small { display:block; color:#64748b; line-height:1.45; overflow-wrap:anywhere; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-process-grid-9dj > .ff-ops-card { width:100%; min-width:0; margin:0; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-process-grid-9dj p { font-size:14px; line-height:1.65; overflow-wrap:break-word; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj { min-width:0; max-width:100%; width:100%; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj table { width:100%; border-collapse:collapse; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj code { white-space:normal; overflow-wrap:anywhere; }
+body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-finops-caution-9dj { padding:12px 14px; background:#fff7ed; border-left:3px solid #f59e0b; border-radius:10px; line-height:1.55; }
+@media (max-width:900px) {
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-card { padding:clamp(13px,3vw,20px); }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj { overflow:visible; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj table,
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody { display:block; width:100%; min-width:0; border:0; background:transparent; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj thead { position:absolute !important; width:1px !important; height:1px !important; overflow:hidden !important; clip-path:inset(50%); white-space:nowrap; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody tr { display:block; width:100%; box-sizing:border-box; margin:0 0 12px; padding:10px 14px; border:1px solid #e2e8f0; border-radius:14px; background:#f8fafc !important; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; box-sizing:border-box; width:100%; max-width:none; min-height:0; padding:9px 0; border:0; border-bottom:1px solid #e2e8f0; text-align:right; overflow-wrap:anywhere; white-space:normal; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td:last-child { border-bottom:0; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td::before { content:attr(data-label); display:block; flex:0 0 37%; max-width:37%; color:#64748b; font-size:12px; font-weight:700; line-height:1.45; text-align:left; white-space:normal; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td:not([data-label]) { display:block; text-align:left; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td:not([data-label])::before { display:none; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-responsive-table-9dj tbody td :where(code,strong,input) { min-width:0; max-width:100%; }
+  body.ff-fieldflow-admin .ff-ops-performance-9dj .ff-ops-limits-table-9dj input[type=number] { width:100%; max-width:145px; margin:0; text-align:right; }
+}

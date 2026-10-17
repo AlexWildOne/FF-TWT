@@ -1,0 +1,27 @@
+<?php
+$root=dirname(__DIR__);
+$read=function($p)use($root){return is_readable($root.'/'.$p)?(string)file_get_contents($root.'/'.$p):'';};
+$fail=[];$assert=function($ok,$n)use(&$fail){if(!$ok)$fail[]=$n;};
+$main=$read('fieldflow.php');preg_match("/FIELDFLOW_VERSION',\s*'([^']+)'/",$main,$m);$version=$m[1]??'';
+$readme=$read('readme.txt');preg_match('/Stable tag:\s*([^\s]+)/',$readme,$sm);$stable=$sm[1]??'';
+$status=$read('src/Services/SubmissionStatusPolicy.php');$day=$read('src/Services/OperationalReportDayPolicy.php');
+$assert($version!==''&&version_compare($version,'2.2.541','>=')&&$stable===$version,'successor_identity');
+$assert(strpos($status,'fieldflow-submission-status-policy-v1')!==false && strpos($status,"['submitted','reviewed','approved']")!==false,'status_policy');
+$assert(strpos($day,'fieldflow-operational-report-day-policy-v1')!==false,'day_policy_loaded');
+$assert(strpos($day,'report_day')!==false && strpos($day,'DATE(')!==false && strpos($day,'submitted_at')!==false,'day_policy_markers');
+$assert(strpos($read('src/Services/VisitCompletionPolicy.php'),'SubmissionStatusPolicy::isOperational')!==false,'visit_policy');
+$assert(substr_count($read('src/Services/RouteProgressService.php'),"SubmissionStatusPolicy::operationalSql('fs')")>=2,'route_progress');
+$assert(strpos($read('src/Forms/ContextQuestions.php'),"SubmissionStatusPolicy::operationalSql('s')")!==false,'context_questions');
+$assert(strpos($read('src/Core/CanonicalStateService.php'),'SubmissionStatusPolicy::operationalSql()')!==false,'canonical_state');
+$assert(strpos($read('src/Services/VisitManualCompletionService.php'),'SubmissionStatusPolicy::operationalSql()')!==false,'manual_completion_status');
+$assert(strpos($read('src/Admin/ReportAutomations.php'),'SubmissionStatusPolicy::operationalSql()')!==false,'daily_close_status');
+$assert(strpos($read('src/Admin/FormSubmissions.php'),"OperationalReportDayPolicy::sqlExpression('s', 'r')")!==false,'bo_operational_day');
+$assert(strpos($read('src/Analytics/AnalyticsAIService.php'),"OperationalReportDayPolicy::versionSqlExpression('s', 'v')")!==false,'analytics_operational_day');
+$assert(strpos($read('src/Rest/StatsController.php'),"SubmissionStatusPolicy::operationalSql('s')")!==false && strpos($read('src/Rest/StatsController.php'),'OperationalReportDayPolicy::versionSqlExpression')!==false,'stats_contract');
+$assert(strpos($read('src/Integrations/PublicQueryService.php'),"OperationalReportDayPolicy::sqlExpression('s')")!==false,'public_api_day');
+$assert(strpos($read('src/Stores/StoreProfileService.php'),"SubmissionStatusPolicy::operationalSql('fs2')")!==false,'store_last_visit');
+$assert(strpos($read('src/Support/Loader.php'),'src/Services/SubmissionStatusPolicy.php')!==false && strpos($read('src/Support/Loader.php'),'src/Services/OperationalReportDayPolicy.php')!==false,'loader');
+$assert(strpos($read('PHASE-9Y-SUBMISSION-STATUS-OPERATIONAL-DAY.md'),'fieldflow-submission-status-operational-day-v1')!==false,'phase_doc');
+$assert(strpos($read('src/Support/Migrations.php'),"LATEST_SCHEMA_VERSION = '2.2.529'")!==false,'schema_identity');
+$assert(strpos($read('src/Forms/SubmissionPipeline.php'),"public const BUILD = '2.2.485'")!==false,'pipeline_identity');
+if($fail){fwrite(STDERR,'FAIL: '.implode(',',$fail)."\n");exit(1);}echo "SUBMISSION STATUS OPERATIONAL DAY 9Y CONTRACT OK\nsuccessor=>=2.2.541\n";

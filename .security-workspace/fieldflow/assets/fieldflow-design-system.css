@@ -1,0 +1,425 @@
+/* FieldFlow Design System 2.2.216
+ * Camada comum para portais, analytics e módulos carregados progressivamente.
+ */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard,.rp-front-routes,.rp-front-commercial,.rp-report-quick,.rp-report-focus,.rp-team-mail,.rp-team-inbox,.ff-expenses,.ff-briefings,.ff-client-briefings,.ff-implementations,.ff-stock-hub,.ffp-front,.ffp-academy,.rp-form-ui,.routespro-form){
+  --ff-ui-surface:var(--ff-surface,#fff);
+  --ff-ui-surface-soft:var(--ff-surface-soft,#f8fafc);
+  --ff-ui-text:var(--ff-text,#0f172a);
+  --ff-ui-muted:var(--ff-muted,#64748b);
+  --ff-ui-border:var(--ff-border,#e2e8f0);
+  --ff-ui-primary:var(--rp-primary-solid,var(--ff-primary,#2563eb));
+  --ff-ui-accent:var(--rp-accent-solid,var(--ff-accent,#06b6d4));
+  --ff-ui-radius-sm:12px;
+  --ff-ui-radius:18px;
+  --ff-ui-radius-lg:26px;
+  --ff-ui-shadow:0 14px 38px rgba(15,23,42,.08);
+  --ff-ui-space:clamp(12px,1.5vw,20px);
+  min-width:0;
+}
+
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel,.rp-panel-card,.rp-premium-card,.card,.ffad-custom-card,.ffad-widget,.ffad-chart-card,.ffad-table-card){min-width:0;max-width:100%}
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-card,.rp-premium-card,.ffad-custom-card,.ffad-widget,.ffad-chart-card,.ffad-table-card){border-color:var(--ff-ui-border);border-radius:var(--ff-ui-radius-lg)}
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-head,.ffad-custom-head,.ffad-section-head){gap:12px;min-width:0}
+:where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-head>div,.ffad-custom-head>div,.ffad-section-head>div){min-width:0}
+:where(.rp-premium-shell,.rp-client-premium) :where(h1,h2,h3,h4,h5,h6,p,small,strong,span){overflow-wrap:anywhere}
+
+/* Grelhas que se adaptam ao espaço real, não apenas ao viewport. */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-grid,.rp-kpi-grid,.ffad-kpi-grid,.ffad-metrics,.ffad-summary-grid,.rp-stats,.rp-metrics){
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));
+  align-items:stretch;
+}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-stat,.rp-kpi,.ffad-kpi,.ffad-metric){min-width:0;height:100%}
+
+/* Charts e SVG nunca podem impor uma largura de desktop ao contentor. */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.ffad-chart,.ffad-chart-body,.rp-chart,.rp-analytics-visuals,.rp-analytics-chart,.rp-line-chart-scroll,.rp-pie-layout,.rp-bar-chart){min-width:0;max-width:100%;overflow:hidden}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) canvas{display:block;max-width:100%!important;width:100%!important;height:auto}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) svg{max-width:100%;height:auto}
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) .rp-line-chart-scroll{overflow-x:auto;overscroll-behavior-inline:contain}
+
+/* Tabelas com um único contrato visual. */
+.ff-table-scroll,.rp-table-wrap,.rp-table-scroll,.ffad-table-wrap,.ffad-analytics-table-wrap{
+  width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;touch-action:pan-x pan-y;border-radius:var(--ff-ui-radius);-webkit-overflow-scrolling:touch;
+}
+.ff-table-scroll{border:1px solid var(--ff-ui-border);background:var(--ff-ui-surface)}
+.ff-table,.ff-table-scroll>table{width:100%;border-collapse:separate;border-spacing:0;background:var(--ff-ui-surface)}
+.ff-table th,.ff-table td{padding:11px 12px;vertical-align:top;border-bottom:1px solid var(--ff-ui-border);text-align:left}
+.ff-table th{position:sticky;top:0;z-index:2;background:var(--ff-ui-surface-soft);color:var(--ff-table-header-text,var(--ff-ui-text));font-size:12px;line-height:1.3;text-transform:uppercase;letter-spacing:.045em}
+.ff-table tbody tr:last-child td{border-bottom:0}
+.ff-table tbody tr:hover{background:color-mix(in srgb,var(--ff-ui-primary) 5%,var(--ff-ui-surface))}
+
+/* Front transition stability: React fallbacks stay invisible during the mount window. */
+[data-fieldflow-react-front-fallback-pending="1"]{display:none!important}
+
+/* Carregamento progressivo. */
+.ff-lazy-panel{position:relative;display:grid;place-items:center;min-height:220px;padding:28px;border:1px dashed var(--ff-ui-border);border-radius:var(--ff-ui-radius);background:linear-gradient(145deg,var(--ff-ui-surface-soft),var(--ff-ui-surface));color:var(--ff-ui-muted)}
+.ff-lazy-panel[aria-busy="true"]{cursor:progress}
+.ff-lazy-label{margin:14px 0 0;text-align:center;font-size:13px;color:var(--ff-ui-muted)}
+.ff-skeleton{width:min(680px,100%);display:grid;gap:11px}
+.ff-skeleton span{display:block;height:16px;border-radius:999px;background:linear-gradient(90deg,#e8edf4 20%,#f8fafc 45%,#e8edf4 70%);background-size:220% 100%;animation:ffSkeleton 1.25s linear infinite}
+.ff-skeleton span:nth-child(1){height:34px;width:42%}.ff-skeleton span:nth-child(2){width:88%}.ff-skeleton span:nth-child(3){width:74%}.ff-skeleton span:nth-child(4){height:92px;width:100%;border-radius:16px}
+@keyframes ffSkeleton{to{background-position:-220% 0}}
+.ff-lazy-error{display:grid;justify-items:center;gap:10px;text-align:center;color:#991b1b}
+.ff-lazy-error strong{font-size:16px}
+.ff-lazy-retry{border:0;border-radius:12px;padding:10px 14px;background:var(--ff-ui-primary);color:#fff;font-weight:800;cursor:pointer}
+.ff-lazy-loaded{animation:ffPanelIn .2s ease-out}
+@keyframes ffPanelIn{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* Estados e controlos comuns. */
+.ff-ui-empty,.ff-ui-error,.ff-ui-notice{padding:20px;border-radius:var(--ff-ui-radius);border:1px dashed var(--ff-ui-border);background:var(--ff-ui-surface-soft);color:var(--ff-ui-muted);text-align:center}
+:where(.rp-premium-shell,.rp-client-premium) :where(button,a,input,select,textarea){max-width:100%}
+:where(.rp-premium-shell,.rp-client-premium) :where(button,.rp-btn,.rp-cta,.rp-small,.ffad-btn){min-height:42px}
+:where(.rp-premium-shell,.rp-client-premium) :where(input,select,textarea){min-width:0}
+
+@media (max-width: 860px){
+  :where(.rp-premium-shell,.rp-client-premium) :where(.rp-shell){width:100%;max-width:100%;padding-inline:10px}
+  :where(.rp-premium-shell,.rp-client-premium) :where(.rp-panel-card,.rp-premium-card,.card){border-radius:18px;padding:14px}
+  :where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-grid,.rp-kpi-grid,.ffad-kpi-grid,.ffad-metrics,.ffad-summary-grid,.rp-stats,.rp-metrics){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width: 640px){
+  :where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard) :where(.rp-grid,.rp-kpi-grid,.ffad-kpi-grid,.ffad-metrics,.ffad-summary-grid,.rp-stats,.rp-metrics){grid-template-columns:1fr}
+  .ff-lazy-panel{min-height:180px;padding:20px 14px}
+
+  /* Tabelas marcadas pelo runtime tornam-se cartões legíveis. */
+  .ff-table.ff-table-cards,.rp-responsive-table.ff-table-cards{display:block!important;min-width:0!important;width:100%!important;background:transparent!important}
+  .ff-table.ff-table-cards thead,.rp-responsive-table.ff-table-cards thead{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+  .ff-table.ff-table-cards tbody,.ff-table.ff-table-cards tr,.ff-table.ff-table-cards td,.rp-responsive-table.ff-table-cards tbody,.rp-responsive-table.ff-table-cards tr,.rp-responsive-table.ff-table-cards td{display:block!important;width:100%!important;min-width:0!important;max-width:none!important}
+  .ff-table.ff-table-cards tbody,.rp-responsive-table.ff-table-cards tbody{display:grid!important;gap:12px!important}
+  .ff-table.ff-table-cards tr,.rp-responsive-table.ff-table-cards tr{padding:12px!important;border:1px solid var(--ff-ui-border)!important;border-radius:16px!important;background:var(--ff-ui-surface)!important;box-shadow:0 8px 20px rgba(15,23,42,.05)!important}
+  .ff-table.ff-table-cards td,.rp-responsive-table.ff-table-cards td{display:grid!important;grid-template-columns:minmax(132px,.62fr) minmax(0,1.2fr)!important;gap:10px!important;padding:8px 0!important;border:0!important;border-bottom:1px solid var(--ff-ui-border)!important;text-align:right!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  .ff-table.ff-table-cards td:last-child,.rp-responsive-table.ff-table-cards td:last-child{border-bottom:0!important}
+  .ff-table.ff-table-cards td:before,.rp-responsive-table.ff-table-cards td:before{content:attr(data-label);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.045em;color:var(--ff-ui-muted);text-align:left}
+  .ff-table.ff-table-cards td[colspan],.rp-responsive-table.ff-table-cards td[colspan]{display:block!important;text-align:left!important}
+  .ff-table.ff-table-cards td[colspan]:before,.rp-responsive-table.ff-table-cards td[colspan]:before{display:none}
+  .ff-table-scroll:has(>.ff-table-cards),.rp-table-wrap:has(>.ff-table-cards),.rp-table-scroll:has(>.ff-table-cards){overflow:visible;border:0;background:transparent}
+}
+
+@media (prefers-reduced-motion:reduce){.ff-skeleton span,.ff-lazy-loaded{animation:none!important}}
+
+
+/* FieldFlow 2.2.220, front experience polish */
+:where(.rp-premium-shell,.rp-client-premium,.routespro-dashboard){
+  container-type:inline-size;
+}
+
+/* Calendários do portal cliente e da app. */
+@media (max-width:900px){
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-weekdays{display:none!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-month-days{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-day-empty{display:none!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-day-chip{min-height:76px!important;display:grid!important;grid-template-columns:48px minmax(0,1fr)!important;align-items:center!important;justify-content:stretch!important;gap:10px!important;padding:10px 12px!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-day-chip>span{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:color-mix(in srgb,var(--ff-primary,#2563eb) 10%,#fff);font-size:21px!important;line-height:1!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-day-chip>small{font-size:12px!important;line-height:1.4!important;overflow:visible!important}
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-day-chip.active>span{background:rgba(255,255,255,.18)}
+}
+@media (max-width:620px){
+  :where(.rp-client-premium.fft-mobile-calendar-agenda) .rp-month-days{grid-template-columns:1fr!important}
+  :where(.rp-client-premium) .rp-calendar-controls{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;gap:7px!important}
+  :where(.rp-client-premium) .rp-calendar-controls select{min-width:0!important;width:100%!important}
+  :where(.rp-client-premium) .rp-month-card{padding:10px!important;border-radius:16px!important;overflow:visible!important}
+  :where(.rp-client-premium) .rp-month-card h5{font-size:17px!important;line-height:1.3!important}
+  :where(.rp-premium-shell) .rpa-day{display:grid!important;grid-template-columns:46px minmax(0,1fr)!important;align-items:center!important;gap:10px!important;padding:10px 12px!important}
+  :where(.rp-premium-shell) .rpa-day>strong{display:grid!important;place-items:center;width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,var(--ff-primary,#2563eb) 10%,#fff);font-size:20px!important}
+  :where(.rp-premium-shell) .rpa-day>small{margin:0!important;font-size:12px!important}
+  :where(.rp-premium-shell) .rpa-day>.rpa-progress{grid-column:2;margin-top:5px!important}
+}
+@media (max-width:760px){
+  :where(.rp-client-premium.fft-mobile-calendar-compact_grid) .rp-weekdays{display:grid!important}
+  :where(.rp-client-premium.fft-mobile-calendar-compact_grid) .rp-month-days{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important}
+  :where(.rp-client-premium.fft-mobile-calendar-compact_grid) .rp-day-empty{display:block!important;min-height:48px!important;border-radius:9px!important}
+  :where(.rp-client-premium.fft-mobile-calendar-compact_grid) .rp-day-chip{min-height:48px!important;padding:6px!important;align-items:center!important;justify-content:center!important;text-align:center!important}
+  :where(.rp-client-premium.fft-mobile-calendar-compact_grid) .rp-day-chip small{display:none!important}
+}
+
+/* Evidências extensas, acordeões, carregamento progressivo e miniaturas. */
+.routespro-dashboard .ffad-evidence-store-card,
+.routespro-dashboard .ffad-evidence-date-card,
+.routespro-dashboard .ffad-evidence-date-group,
+.routespro-dashboard .ffad-evidence-date-first-store{display:block}
+.routespro-dashboard details.ffad-evidence-store-card>summary,
+.routespro-dashboard details.ffad-evidence-date-card>summary,
+.routespro-dashboard details.ffad-evidence-date-group>summary,
+.routespro-dashboard details.ffad-evidence-date-first-store>summary{list-style:none;cursor:pointer}
+.routespro-dashboard details>summary::-webkit-details-marker{display:none}
+.routespro-dashboard .ffad-evidence-chevron{position:relative;flex:0 0 28px;width:28px;height:28px;border:1px solid var(--ff-border,#dbe5f0);border-radius:999px;background:var(--ff-surface,#fff)}
+.routespro-dashboard .ffad-evidence-chevron:before,
+.routespro-dashboard .ffad-evidence-chevron:after{content:"";position:absolute;left:50%;top:50%;width:10px;height:2px;background:var(--ff-heading,#0f172a);transform:translate(-50%,-50%);transition:transform .16s ease}
+.routespro-dashboard .ffad-evidence-chevron:after{transform:translate(-50%,-50%) rotate(90deg)}
+.routespro-dashboard details[open]>summary .ffad-evidence-chevron:after{transform:translate(-50%,-50%) rotate(0deg)}
+.routespro-dashboard .ffad-evidence-store-body{padding:0 12px 12px}
+.routespro-dashboard .ffad-evidence-date-body{padding:0 10px 10px}
+.routespro-dashboard .ffad-evidence-action-row{display:flex;justify-content:flex-end;padding:10px 0 2px}
+.routespro-dashboard .ffad-evidence-more{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;margin-top:10px;border:1px solid var(--ff-border,#dbe5f0);border-radius:13px;background:var(--ff-surface,#fff);color:var(--ff-heading,#0f172a);font-weight:850;cursor:pointer}
+.routespro-dashboard .ffad-evidence-thumb img{opacity:.55;background:#eef2f7;transition:opacity .2s ease,transform .18s ease}
+.routespro-dashboard .ffad-evidence-thumb img.is-loaded{opacity:1}
+.routespro-dashboard.fft-evidence-thumb-compact .ffad-evidence-thumbs,
+.fft-evidence-thumb-compact .ffad-evidence-thumbs{grid-template-columns:repeat(auto-fill,minmax(76px,86px))!important}
+.routespro-dashboard.fft-evidence-thumb-compact .ffad-evidence-thumb img,
+.fft-evidence-thumb-compact .ffad-evidence-thumb img{height:66px!important}
+.routespro-dashboard.fft-evidence-thumb-medium .ffad-evidence-thumbs,
+.fft-evidence-thumb-medium .ffad-evidence-thumbs{grid-template-columns:repeat(auto-fill,minmax(108px,132px))!important}
+.routespro-dashboard.fft-evidence-thumb-medium .ffad-evidence-thumb img,
+.fft-evidence-thumb-medium .ffad-evidence-thumb img{height:100px!important}
+.routespro-dashboard.fft-evidence-thumb-large .ffad-evidence-thumbs,
+.fft-evidence-thumb-large .ffad-evidence-thumbs{grid-template-columns:repeat(auto-fill,minmax(150px,190px))!important}
+.routespro-dashboard.fft-evidence-thumb-large .ffad-evidence-thumb img,
+.fft-evidence-thumb-large .ffad-evidence-thumb img{height:138px!important}
+
+@media (max-width:700px){
+  .routespro-dashboard .ffad-evidence-store-list,
+  .routespro-dashboard .ffad-evidence-date-first{gap:10px!important}
+  .routespro-dashboard .ffad-evidence-store-card,
+  .routespro-dashboard .ffad-evidence-date-card{border-radius:16px!important}
+  .routespro-dashboard .ffad-evidence-store-head,
+  .routespro-dashboard .ffad-evidence-date-first-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;padding:13px 14px!important}
+  .routespro-dashboard .ffad-evidence-date-head,
+  .routespro-dashboard .ffad-evidence-date-first-store-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;padding:11px!important}
+  .routespro-dashboard .ffad-evidence-store-copy strong,
+  .routespro-dashboard .ffad-evidence-date-copy strong{white-space:normal!important;overflow:visible!important;font-size:15px!important;line-height:1.3}
+  .routespro-dashboard .ffad-evidence-action-row .ffad-evidence-action{width:100%!important;min-height:42px!important}
+  .routespro-dashboard .ffad-evidence-store-body{padding:0 9px 9px!important}
+  .routespro-dashboard .ffad-evidence-date-list{padding:8px!important;gap:8px!important}
+  .routespro-dashboard .ffad-evidence-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;padding:9px!important}
+  .routespro-dashboard .ffad-evidence-thumb{min-height:0!important}
+  .routespro-dashboard .ffad-evidence-thumb img{height:auto!important;aspect-ratio:4/3!important}
+  .routespro-dashboard .ffad-evidence-thumb span{font-size:11px!important;padding:7px 8px!important}
+  .routespro-dashboard .ffad-evidence-tabs{max-width:100%;scrollbar-width:none}
+  .routespro-dashboard .ffad-evidence-tabs::-webkit-scrollbar{display:none}
+}
+@media (max-width:390px){.routespro-dashboard .ffad-evidence-thumbs{grid-template-columns:1fr!important}}
+
+/* Tabelas, o modo vem da Personalização. */
+@media (max-width:760px){
+  :where(.fft-mobile-table-cards) .ff-table.ff-table-cards,
+  :where(.fft-mobile-table-cards) .rp-responsive-table.ff-table-cards{display:block!important;min-width:0!important;width:100%!important}
+  :where(.fft-mobile-table-cards) .ff-table.ff-table-cards td,
+  :where(.fft-mobile-table-cards) .rp-responsive-table.ff-table-cards td{grid-template-columns:minmax(124px,.6fr) minmax(0,1.22fr)!important;text-align:left!important}
+  :where(.fft-mobile-table-cards) .ff-table.ff-table-cards td>*{max-width:100%}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards,
+  :where(.fft-mobile-table-scroll) .rp-responsive-table.ff-table-cards{display:table!important;width:max-content!important;min-width:720px!important}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards thead,
+  :where(.fft-mobile-table-scroll) .rp-responsive-table.ff-table-cards thead{position:static!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;white-space:normal!important}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards tbody{display:table-row-group!important}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards tr{display:table-row!important;padding:0!important;border:0!important;box-shadow:none!important}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards td{display:table-cell!important;width:auto!important;padding:10px 12px!important;border-bottom:1px solid var(--ff-ui-border)!important;text-align:left!important}
+  :where(.fft-mobile-table-scroll) .ff-table.ff-table-cards td:before{display:none!important}
+  :where(.fft-mobile-table-scroll) .ff-table-scroll:has(>.ff-table-cards){overflow:auto!important;border:1px solid var(--ff-ui-border)!important;background:var(--ff-ui-surface)!important}
+}
+
+/* Navegação inferior compacta, sem esconder conteúdo. */
+@media (max-width:760px){
+  :where(.fft-mobile-nav-compact) .rp-tabbar{gap:5px!important;padding:6px!important;border-radius:17px!important;scroll-snap-type:x proximity;scrollbar-width:none}
+  :where(.fft-mobile-nav-compact) .rp-tabbar::-webkit-scrollbar{display:none}
+  :where(.fft-mobile-nav-compact) .rp-tabbar button{flex:0 0 auto!important;min-width:96px!important;min-height:50px!important;padding:9px 11px!important;border-radius:13px!important;font-size:13px!important;scroll-snap-align:center}
+  :where(.fft-mobile-nav-compact) .rp-panels{padding-bottom:126px!important}
+  body.fieldflow-mobile-webview :where(.fft-mobile-nav-compact) .rp-shell,
+  html[data-fieldflow-display-mode="standalone"] :where(.fft-mobile-nav-compact) .rp-shell{padding-bottom:calc(122px + env(safe-area-inset-bottom,0px))!important}
+}
+
+/* Analytics e widgets, mais ar em tablet e leitura vertical em mobile. */
+@media (max-width:980px){
+  .routespro-dashboard .ffad-custom-grid{grid-template-columns:1fr!important}
+  .routespro-dashboard .ffad-metric{grid-column:1/-1!important;min-width:0!important}
+}
+@media (max-width:700px){
+  .routespro-dashboard .ffad-custom-dashboard{padding:0!important}
+  .routespro-dashboard .ffad-custom-head{border-radius:16px 16px 0 0!important}
+  .routespro-dashboard .ffad-widget-detail>summary{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important}
+  .routespro-dashboard .ffad-kpis,.routespro-dashboard .ffad-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .routespro-dashboard .ffad-kpi,.routespro-dashboard .ffad-summary-grid>div{min-height:96px!important;padding:12px!important}
+  .routespro-dashboard .ffad-kpi strong{font-size:22px!important}
+  .routespro-dashboard .ffad-analytics-table{max-height:none!important;overflow:visible!important}
+}
+@media (max-width:390px){.routespro-dashboard .ffad-kpis,.routespro-dashboard .ffad-summary-grid{grid-template-columns:1fr!important}}
+
+/* 2.2.220.1, Frentes atuais com abas e paginação configurável. */
+.rp-client-premium .rp-fronts-tabs,
+.routespro-dashboard .ffad-fronts-tabs{
+  display:flex;gap:8px;align-items:center;overflow-x:auto;padding:4px 0 10px;
+  scroll-snap-type:x proximity;scrollbar-width:none
+}
+.rp-client-premium .rp-fronts-tabs::-webkit-scrollbar,
+.routespro-dashboard .ffad-fronts-tabs::-webkit-scrollbar{display:none}
+.rp-client-premium .rp-fronts-tabs button,
+.routespro-dashboard .ffad-fronts-tabs button{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:8px 12px;
+  border:1px solid var(--ff-border,#dbe4ef);border-radius:999px;background:var(--ff-surface,#fff);
+  color:var(--ff-text,#0f172a);font:inherit;font-size:12px;font-weight:850;cursor:pointer;scroll-snap-align:start
+}
+.rp-client-premium .rp-fronts-tabs button span,
+.routespro-dashboard .ffad-fronts-tabs button span{
+  display:inline-grid;place-items:center;min-width:23px;height:23px;padding:0 6px;border-radius:999px;
+  background:color-mix(in srgb,var(--ff-primary,#2563eb) 10%,var(--ff-surface,#fff));font-size:10px
+}
+.rp-client-premium .rp-fronts-tabs button.is-active,
+.routespro-dashboard .ffad-fronts-tabs button.is-active{
+  border-color:var(--ff-primary,#2563eb);background:var(--ff-primary,#2563eb);color:var(--ff-button-text,#fff)
+}
+.rp-client-premium .rp-fronts-tabs button.is-active span,
+.routespro-dashboard .ffad-fronts-tabs button.is-active span{background:rgba(255,255,255,.2);color:inherit}
+.rp-client-premium .rp-fronts-table-panel{margin-top:4px}
+.rp-client-premium .rp-fronts-table-tools,
+.routespro-dashboard .ffad-table-controls{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin:8px 0;padding:9px 11px;border:1px solid var(--ff-border,#dbe4ef);border-radius:12px;
+  background:color-mix(in srgb,var(--ff-canvas,#f4f7fb) 65%,var(--ff-surface,#fff));
+  color:var(--ff-muted,#64748b);font-size:12px;font-weight:750
+}
+.rp-client-premium .rp-fronts-table-tools label,
+.routespro-dashboard .ffad-table-controls label,
+.rp-client-premium .rp-page-size-control{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.rp-client-premium .rp-fronts-table-tools select,
+.routespro-dashboard .ffad-table-controls select,
+.rp-client-premium .rp-page-size-control select{
+  min-height:36px;padding:6px 28px 6px 9px;border:1px solid var(--ff-border,#dbe4ef);border-radius:9px;
+  background:var(--ff-surface,#fff);color:var(--ff-input-text,#0f172a);font:inherit;font-size:12px;font-weight:800
+}
+.rp-client-premium .rp-fronts-pagination,
+.routespro-dashboard .ffad-pagination{
+  display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin:12px 0 4px
+}
+.rp-client-premium .rp-fronts-pagination button,
+.routespro-dashboard .ffad-pagination button{
+  min-width:36px;min-height:36px;padding:6px 10px;border:1px solid var(--ff-border,#dbe4ef);border-radius:10px;
+  background:var(--ff-surface,#fff);color:var(--ff-text,#0f172a);font:inherit;font-size:12px;font-weight:850;cursor:pointer
+}
+.rp-client-premium .rp-fronts-pagination button.is-active,
+.routespro-dashboard .ffad-pagination button.is-active{
+  border-color:var(--ff-primary,#2563eb);background:var(--ff-primary,#2563eb);color:var(--ff-button-text,#fff)
+}
+.rp-client-premium .rp-fronts-pagination button:disabled,
+.routespro-dashboard .ffad-pagination button:disabled{opacity:.42;cursor:not-allowed}
+.rp-client-premium .rp-table-tools-top{align-items:center}
+.rp-client-premium .rp-page-size-control{margin-left:auto;color:var(--ff-muted,#64748b);font-size:12px;font-weight:800}
+
+@media(max-width:760px){
+  .rp-client-premium .rp-fronts-tabs,
+  .routespro-dashboard .ffad-fronts-tabs{margin-inline:-2px;padding-bottom:8px}
+  .rp-client-premium .rp-fronts-tabs button,
+  .routespro-dashboard .ffad-fronts-tabs button{min-height:42px;padding:9px 12px}
+  .rp-client-premium .rp-fronts-table-tools,
+  .routespro-dashboard .ffad-table-controls{align-items:stretch;flex-direction:column}
+  .rp-client-premium .rp-fronts-table-tools label,
+  .routespro-dashboard .ffad-table-controls label,
+  .rp-client-premium .rp-page-size-control{width:100%;justify-content:space-between;margin-left:0}
+  .rp-client-premium .rp-fronts-table-tools select,
+  .routespro-dashboard .ffad-table-controls select,
+  .rp-client-premium .rp-page-size-control select{min-width:126px}
+  .rp-client-premium .rp-fronts-pagination,
+  .routespro-dashboard .ffad-pagination{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px;scrollbar-width:none}
+  .rp-client-premium .rp-fronts-pagination::-webkit-scrollbar,
+  .routespro-dashboard .ffad-pagination::-webkit-scrollbar{display:none}
+  .rp-client-premium .rp-fronts-pagination button,
+  .routespro-dashboard .ffad-pagination button{flex:0 0 auto;min-height:40px}
+}
+
+/* 2.2.220.3, limite vertical seguro com largura integral preservada. */
+.ff-fieldflow-host{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  align-self:stretch!important;
+  flex:1 1 100%!important;
+  box-sizing:border-box!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  align-self:stretch!important;
+  flex:1 1 100%!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe :where(.rp-shell,.rp-panels,.rp-panel.active){
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-shell{
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  padding-bottom:24px!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panels{
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  padding-bottom:0!important;
+  margin-bottom:0!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel[hidden],
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel:not(.active){
+  display:none!important;
+  min-height:0!important;
+  height:0!important;
+  max-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel.active{
+  display:block!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  margin-bottom:0!important;
+  overflow:visible!important;
+  visibility:visible!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel.active :where(#rpcp-analytics-panel,.rp-route-list){
+  padding-bottom:0!important;
+  scroll-padding-bottom:0!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel.active :where(.ffp-front,.ffp-academy){
+  padding-bottom:clamp(12px,2vw,22px)!important;
+}
+:where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panel.active .rp-report-quick .rp-submit-wrap{
+  margin-bottom:0!important;
+}
+
+/* Em telefone e tablet a barra e fixa e a reserva existe apenas na shell. */
+@media (max-width:1180px){
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-tabs{
+    position:fixed!important;
+    left:max(8px,env(safe-area-inset-left,0px))!important;
+    right:max(8px,env(safe-area-inset-right,0px))!important;
+    bottom:max(8px,env(safe-area-inset-bottom,0px))!important;
+    width:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    z-index:2147483000!important;
+  }
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-tabbar{
+    width:min(100%,920px)!important;
+    margin:0 auto!important;
+  }
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-shell{
+    padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))!important;
+  }
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-panels,
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe #rpcp-analytics-panel{
+    padding-bottom:0!important;
+    scroll-padding-bottom:0!important;
+  }
+}
+
+@media (max-width:420px){
+  :where(.rp-premium-shell.rp-app,.rp-client-premium).ff-scroll-extent-safe .rp-shell{
+    padding-bottom:calc(82px + env(safe-area-inset-bottom,0px))!important;
+  }
+}
+

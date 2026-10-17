@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "none",
+    "lib": ["ES2019", "DOM"],
+    "strict": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "removeComments": false,
+    "newLine": "lf"
+  },
+  "files": [
+    "src/version.generated.ts",
+    "src/react-backoffice/types.ts",
+    "src/react-backoffice/shared.ts",
+    "src/react-backoffice/islands.ts",
+    "src/react-backoffice/bootstrap.ts"
+  ]
+}
